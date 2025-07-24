@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:application/core/constants/app_colors.dart';
+
 class TextStyles {
   static const TextStyle headline = TextStyle(
     fontSize: 22,
@@ -23,7 +25,16 @@ class TextStyles {
     color: Colors.white,
   );
 
-  static const TextStyle titleMedium = TextStyle(fontSize: 18, fontWeight: FontWeight.w700);
-  static const TextStyle bodyMedium = TextStyle(fontSize: 14);
-  static const TextStyle bodySmall = TextStyle(fontSize: 12, fontWeight: FontWeight.w600);
+  static const TextStyle titleHeading = TextStyle(fontSize: 20, fontWeight: FontWeight.w900);
+  static const TextStyle titleHeadingMedium = TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: AppColors.white);
+
+  static const TextStyle titleScaffold = TextStyle(fontSize: 16, fontWeight: FontWeight.w900, color: AppColors.white);
+  static const TextStyle titleInput = TextStyle(fontSize: 14, fontWeight: FontWeight.w700);
+
+  static const TextStyle titleMedium = TextStyle(fontSize: 13, fontWeight: FontWeight.w900);
+  static const TextStyle titleSmall = TextStyle(fontSize: 11, fontWeight: FontWeight.w700);
+  static const TextStyle bodyMedium = TextStyle(fontSize: 12, fontWeight: FontWeight.w700);
+  static const TextStyle bodyNormal = TextStyle(fontSize: 10, fontWeight: FontWeight.normal);
+  static const TextStyle bodySmall = TextStyle(fontSize: 10, fontWeight: FontWeight.w700);
+  static const TextStyle bodySuperSmall = TextStyle(fontSize: 8, fontWeight: FontWeight.w700);
 }

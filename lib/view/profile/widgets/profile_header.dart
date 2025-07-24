@@ -26,10 +26,7 @@ class ProfileHeader extends StatelessWidget {
           const SizedBox(width: 12),
           Text(
             'Tài khoản',
-            style: TextStyles.titleMedium.copyWith(
-              color: AppColors.white,
-              fontWeight: FontWeight.w900,
-            ),
+            style: TextStyles.titleScaffold,
           ),
         ],
       ),

@@ -56,10 +56,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 const SizedBox(width: 12),
                 Text(
                   'Quên mật khẩu',
-                  style: TextStyles.titleMedium.copyWith(
-                    color: AppColors.white,
-                    fontWeight: FontWeight.w900,
-                  ),
+                  style: TextStyles.titleScaffold
                 ),
               ],
             ),
@@ -72,12 +69,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Email của bạn', style: TextStyles.titleMedium),
+                Text('Email của bạn', style: TextStyles.titleInput),
                 const SizedBox(height: 8),
                 TextField(
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
-                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                  style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
                   decoration: InputDecoration(
                     hintText: 'Nhập email',
                     errorText: _emailError,
@@ -114,13 +111,15 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 const SizedBox(height: 32),
                 SizedBox(
                   width: double.infinity,
+                  height: 50,
                   child: ElevatedButton.icon(
                     onPressed: _submit,
                     label: Text(
                       'Xác nhận',
-                      style: TextStyles.titleMedium.copyWith(
+                      style: TextStyle(
                         color: AppColors.white,
                         fontWeight: FontWeight.w900,
+                        fontSize: 14
                       ),
                     ),
                     icon: const Icon(Icons.check, color: AppColors.white),

@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:application/core/constants/app_colors.dart';
 import 'package:application/core/utils/auth_provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:application/core/theme/text_styles.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -36,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
             width: double.infinity,
             constraints: BoxConstraints(minHeight: size.height * 0.7),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: AppColors.white,
               borderRadius: BorderRadius.circular(24),
               boxShadow: [
                 BoxShadow(
@@ -51,15 +52,13 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
               children: [
                 Image.asset(
                   'assets/images/logo.png',
-                  height: 100,
+                  height: 80,
+                  width: 80,
                 ),
                 const SizedBox(height: 20),
                 const Text(
                   'Đăng nhập',
-                  style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w900
-                  ),
+                  style: TextStyles.titleHeading,
                 ),
                 const SizedBox(height: 24),
 
@@ -72,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                 TextField(
                   controller: _phoneController,
                   keyboardType: TextInputType.phone,
-                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                  style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
                   inputFormatters: [
                     FilteringTextInputFormatter.digitsOnly,
                     LengthLimitingTextInputFormatter(10),
@@ -120,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                 TextField(
                   controller: _passwordController,
                   obscureText: _obscurePassword,
-                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                  style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.lock, color: AppColors.iconInput),
                     errorText: _passwordError,
@@ -176,7 +175,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                     },
                     child: const Text(
                       'Quên mật khẩu',
-                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 12),
                     ),
                   ),
                 ),
@@ -184,7 +183,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
 
                 SizedBox(
                   width: double.infinity,
-                  height: 54,
+                  height: 50,
                   child: ElevatedButton(
                     onPressed: () async {
                       setState(() {
@@ -243,7 +242,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                     ),
                     child: const Text(
                       'Đăng nhập',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w900, color: AppColors.textPrimaryButton),
+                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: AppColors.textPrimaryButton),
                     ),
                   ),
                 ),
@@ -255,7 +254,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                   icon: const Icon(Icons.help_outline, color: Colors.white, size: 20),
                   label: const Text(
                     'Liên hệ chúng tôi để được hỗ trợ',
-                    style: TextStyle(color: AppColors.textPrimaryButton, fontWeight: FontWeight.bold),
+                    style: TextStyle(color: AppColors.textPrimaryButton, fontWeight: FontWeight.bold, fontSize: 10),
                   ),
                   style: TextButton.styleFrom(
                     backgroundColor: const Color(0xFF90CAF9),

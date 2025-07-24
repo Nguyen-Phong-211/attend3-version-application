@@ -35,10 +35,7 @@ class NotificationHeader extends StatelessWidget {
           const SizedBox(width: 12),
           Text(
             'Thông báo',
-            style: TextStyles.titleMedium.copyWith(
-              color: AppColors.white,
-              fontWeight: FontWeight.w900,
-            ),
+            style: TextStyles.titleScaffold,
           ),
           const Spacer(),
           NotificationSortPopup(

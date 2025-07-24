@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:application/core/constants/app_colors.dart';
 import 'package:application/view/schedule/schedule_screen.dart';
+import 'package:application/core/theme/text_styles.dart';
 
 class ScheduleViewSwitcher extends StatelessWidget {
   final ViewMode viewMode;
@@ -21,8 +22,8 @@ class ScheduleViewSwitcher extends StatelessWidget {
         fillColor: AppColors.backgroundPrimaryButton,
         onPressed: (index) => onChanged(index == 0 ? ViewMode.week : ViewMode.month),
         children: const [
-          Padding(padding: EdgeInsets.symmetric(horizontal: 16), child: Text('Tuần', style: TextStyle(fontWeight: FontWeight.w900))),
-          Padding(padding: EdgeInsets.symmetric(horizontal: 16), child: Text('Tháng', style: TextStyle(fontWeight: FontWeight.w900))),
+          Padding(padding: EdgeInsets.symmetric(horizontal: 16), child: Text('Tuần', style: TextStyles.titleMedium)),
+          Padding(padding: EdgeInsets.symmetric(horizontal: 16), child: Text('Tháng', style: TextStyles.titleMedium)),
         ],
       ),
     );

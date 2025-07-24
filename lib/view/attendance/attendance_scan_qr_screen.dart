@@ -94,10 +94,7 @@ class _AttendanceScanQrScreenState extends State<AttendanceScanQrScreen> {
                     const SizedBox(width: 12),
                     Text(
                       'Quét QR Môn học',
-                      style: TextStyles.titleMedium.copyWith(
-                        color: AppColors.white,
-                        fontWeight: FontWeight.w900,
-                      ),
+                      style: TextStyles.titleScaffold,
                     ),
                   ],
                 ),

@@ -37,10 +37,7 @@ class AttendanceScreen extends StatelessWidget {
                 const SizedBox(width: 12),
                 Text(
                   'Buổi điểm danh trong hôm nay',
-                  style: TextStyles.titleMedium.copyWith(
-                    color: AppColors.white,
-                    fontWeight: FontWeight.w900,
-                  ),
+                  style: TextStyles.titleScaffold,
                 ),
               ],
             ),
@@ -54,7 +51,6 @@ class AttendanceScreen extends StatelessWidget {
             child: Text(
               'Bạn có 6 buổi điểm danh trong hôm nay',
               style: TextStyles.titleMedium.copyWith(
-                fontWeight: FontWeight.w700,
                 color: AppColors.textPrimary,
               ),
             ),
@@ -74,7 +70,7 @@ class AttendanceScreen extends StatelessWidget {
                     color: Colors.pink.shade100,
                     borderRadius: AppBorderRadius.radius20,
                   ),
-                  child: const Text('Điểm danh: 1/6', style: TextStyle(fontWeight: FontWeight.w700),),
+                  child: const Text('Điểm danh: 1/6', style: TextStyles.titleSmall,),
                 ),
               ],
             ),

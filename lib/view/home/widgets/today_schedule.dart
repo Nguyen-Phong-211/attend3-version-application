@@ -34,11 +34,7 @@ class TodaySchedule extends StatelessWidget {
               },
               child: Text(
                 'Xem tất cả',
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.textPrimaryColor,
-                ),
+                style: TextStyles.titleSmall.copyWith(color: AppColors.textPrimaryColor),
               ),
             ),
           ],

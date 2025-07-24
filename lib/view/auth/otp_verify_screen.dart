@@ -88,10 +88,7 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                 const SizedBox(width: 12),
                 Text(
                   'Xác thực OTP',
-                  style: TextStyles.titleMedium.copyWith(
-                    color: AppColors.white,
-                    fontWeight: FontWeight.w900,
-                  ),
+                  style: TextStyles.titleScaffold,
                 ),
               ],
             ),
@@ -105,7 +102,8 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Nhập mã xác thực gồm 6 chữ số',
-                    style: TextStyles.titleMedium),
+                    style: TextStyles.titleInput,
+                ),
                 const SizedBox(height: 24),
 
                 // OTP Fields
@@ -119,14 +117,16 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                 // Confirm button
                 SizedBox(
                   width: double.infinity,
+                  height: 50,
                   child: ElevatedButton.icon(
                     onPressed: _verifyOtp,
                     icon: const Icon(Icons.verified, color: Colors.white),
                     label: Text(
                       'Xác minh',
-                      style: TextStyles.titleMedium.copyWith(
-                        color: AppColors.white,
-                        fontWeight: FontWeight.w900,
+                      style: TextStyle(
+                          color: AppColors.white,
+                          fontWeight: FontWeight.w900,
+                          fontSize: 14
                       ),
                     ),
                     style: ElevatedButton.styleFrom(

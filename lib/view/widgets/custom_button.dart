@@ -39,7 +39,7 @@ class CustomButton extends StatelessWidget {
             child: Image.asset(iconPath, height: 32, width: 32),
           ),
           const SizedBox(height: 8),
-          Text(label, style: TextStyles.bodySmall.copyWith(fontWeight: FontWeight.w600), textAlign: TextAlign.center),
+          Text(label, style: TextStyles.bodySuperSmall, textAlign: TextAlign.center),
         ],
       ),
     );

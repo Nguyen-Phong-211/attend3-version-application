@@ -14,6 +14,7 @@ class AllQuickAccessScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: Column(
         children: [
           Container(
@@ -32,7 +33,7 @@ class AllQuickAccessScreen extends StatelessWidget {
                 const SizedBox(width: 12),
                 Text(
                   'Tất cả truy cập nhanh',
-                  style: TextStyles.titleMedium.copyWith(color: AppColors.white, fontWeight: FontWeight.w900),
+                  style: TextStyles.titleScaffold
                 ),
               ],
             ),
@@ -48,7 +49,7 @@ class AllQuickAccessScreen extends StatelessWidget {
                 mainAxisSpacing: 16,
                 children: [
                   CustomButton(
-                    label: 'Điểm danh QR Code',
+                    label: 'QR Điểm danh',
                     iconPath: 'assets/icons/scan-code.png',
                     backgroundColor: Color(0xFFD1C4E9),
                     onTap: () {

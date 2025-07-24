@@ -72,10 +72,7 @@ class _AttendanceByCameraScreenState extends State<AttendanceByCameraScreen> {
                 const SizedBox(width: 12),
                 Text(
                   'Điểm danh bằng camera',
-                  style: TextStyles.titleMedium.copyWith(
-                    color: AppColors.white,
-                    fontWeight: FontWeight.w900,
-                  ),
+                  style: TextStyles.titleScaffold,
                 ),
               ],
             ),

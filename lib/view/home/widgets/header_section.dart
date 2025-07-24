@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'barcode_card.dart';
+import 'package:application/core/theme/text_styles.dart';
 
 class HeaderSection extends StatelessWidget {
   const HeaderSection({super.key});
@@ -30,15 +31,15 @@ class HeaderSection extends StatelessWidget {
                 radius: 24,
               ),
               const SizedBox(width: 12),
-              const Expanded(
+              Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Xin chào,', style: TextStyle(color: Colors.white, fontSize: 14)),
+                    Text('Xin chào,', style: TextStyles.bodySmall.copyWith(color: Colors.white)),
                     SizedBox(height: 2),
                     Text(
                       'Nguyễn Nguyễn Phong',
-                      style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+                      style: TextStyles.titleSmall.copyWith(color: Colors.white),
                     ),
                   ],
                 ),
@@ -49,9 +50,9 @@ class HeaderSection extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(30),
                 ),
-                child: const Text(
+                child: Text(
                   'Số buổi nghỉ phép: 9',
-                  style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.w600),
+                  style: TextStyles.titleSmall.copyWith(color: Colors.black),
                 ),
               ),
             ],

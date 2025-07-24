@@ -35,8 +35,8 @@ class ScheduleDateSelector extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(day, style: TextStyle(color: isSelected ? AppColors.white : AppColors.black)),
-                  Text(num, style: TextStyle(fontWeight: FontWeight.w700, color: isSelected ? AppColors.white : AppColors.black)),
+                  Text(day, style: TextStyle(color: isSelected ? AppColors.white : AppColors.black, fontSize: 12)),
+                  Text(num, style: TextStyle(fontWeight: FontWeight.w700, color: isSelected ? AppColors.white : AppColors.black, fontSize: 12)),
                 ],
               ),
             ),

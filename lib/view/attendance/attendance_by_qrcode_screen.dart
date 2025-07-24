@@ -37,10 +37,7 @@ class AttendanceByQrcodeScreen extends StatelessWidget {
                 const SizedBox(width: 12),
                 Text(
                   'Buổi điểm danh QR Code',
-                  style: TextStyles.titleMedium.copyWith(
-                    color: AppColors.white,
-                    fontWeight: FontWeight.w900,
-                  ),
+                  style: TextStyles.titleScaffold,
                 ),
               ],
             ),
@@ -53,7 +50,7 @@ class AttendanceByQrcodeScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Text(
               'Bạn có 6 buổi điểm danh trong hôm nay',
-              style: TextStyles.titleMedium.copyWith(
+              style: TextStyles.titleSmall.copyWith(
                 fontWeight: FontWeight.w700,
                 color: AppColors.textPrimary,
               ),

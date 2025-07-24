@@ -27,7 +27,7 @@ class BarcodeCard extends StatelessWidget {
             'Đưa mã cho giảng viên để điểm danh\n(chỉ sử dụng khi QR code và check face thất bại)',
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 12,
+              fontSize: 10,
               fontWeight: FontWeight.w600,
               color: Colors.black,
             ),

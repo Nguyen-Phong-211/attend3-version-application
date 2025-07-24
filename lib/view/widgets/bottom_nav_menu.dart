@@ -22,11 +22,11 @@ class CustomBottomNavBar extends StatelessWidget {
       type: BottomNavigationBarType.fixed,
       selectedLabelStyle: const TextStyle(
         fontWeight: FontWeight.w900,
-        fontSize: 14,
+        fontSize: 12,
       ),
       unselectedLabelStyle: const TextStyle(
         fontWeight: FontWeight.w600,
-        fontSize: 13,
+        fontSize: 11,
       ),
       currentIndex: currentIndex,
       onTap: (index) {
@@ -37,7 +37,7 @@ class CustomBottomNavBar extends StatelessWidget {
           }},
       items: [
         const BottomNavigationBarItem(
-          icon: FaIcon(FontAwesomeIcons.house),
+          icon: FaIcon(FontAwesomeIcons.house,),
           label: 'Trang chủ',
         ),
         const BottomNavigationBarItem(

@@ -23,7 +23,7 @@ class ScheduleHeader extends StatelessWidget {
               onTap: () => Navigator.pop(context),
               child: const FaIcon(FontAwesomeIcons.chevronLeft, color: AppColors.white)),
           const SizedBox(width: 12),
-          Text('Lịch học', style: TextStyles.titleMedium.copyWith(color: AppColors.white, fontWeight: FontWeight.w900)),
+          Text('Lịch học', style: TextStyles.titleScaffold,),
         ],
       ),
     );

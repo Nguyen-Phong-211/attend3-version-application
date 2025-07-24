@@ -29,10 +29,7 @@ class ProfileActionTile extends StatelessWidget {
         leading: Icon(icon, color: AppColors.primary),
         title: Text(
           title,
-          style: TextStyles.bodyMedium.copyWith(
-            fontWeight: FontWeight.w700,
-            fontSize: 16,
-          ),
+          style: TextStyles.bodyMedium,
         ),
         trailing: const Icon(Icons.chevron_right),
         onTap: onTap,
