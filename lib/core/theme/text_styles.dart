@@ -31,10 +31,14 @@ class TextStyles {
   static const TextStyle titleScaffold = TextStyle(fontSize: 16, fontWeight: FontWeight.w900, color: AppColors.white);
   static const TextStyle titleInput = TextStyle(fontSize: 14, fontWeight: FontWeight.w700);
 
+  static const TextStyle hintTextInput = TextStyle(fontSize: 13, fontWeight: FontWeight.normal);
+
   static const TextStyle titleMedium = TextStyle(fontSize: 13, fontWeight: FontWeight.w900);
   static const TextStyle titleSmall = TextStyle(fontSize: 11, fontWeight: FontWeight.w700);
   static const TextStyle bodyMedium = TextStyle(fontSize: 12, fontWeight: FontWeight.w700);
   static const TextStyle bodyNormal = TextStyle(fontSize: 10, fontWeight: FontWeight.normal);
   static const TextStyle bodySmall = TextStyle(fontSize: 10, fontWeight: FontWeight.w700);
   static const TextStyle bodySuperSmall = TextStyle(fontSize: 8, fontWeight: FontWeight.w700);
+
+  static const TextStyle bodyNormal8 = TextStyle(fontSize: 8, fontWeight: FontWeight.normal);
 }

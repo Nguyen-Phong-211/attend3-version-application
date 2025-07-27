@@ -7,6 +7,12 @@ import 'package:application/core/constants/app_colors_linear_gradient_constants.
 import 'package:application/core/constants/border_radius.dart';
 import 'package:application/view/attendance/attendance_by_qrcode_screen.dart';
 import 'package:application/view/profile/update_profile.dart';
+import 'package:application/view/leave/leave_screen.dart';
+import 'package:application/view/contact_lecturer/contact_lecturer_screen.dart';
+import 'package:application/view/schedule/schedule_screen.dart';
+import 'package:application/view/remind/remind_screen.dart';
+import 'package:application/view/dashboard/dashboard_screen.dart';
+import 'package:application/view/attendance/attendance_history_screen.dart';
 
 class AllQuickAccessScreen extends StatelessWidget {
   const AllQuickAccessScreen({super.key});
@@ -71,19 +77,40 @@ class AllQuickAccessScreen extends StatelessWidget {
                     label: 'Xin nghỉ phép',
                     iconPath: 'assets/icons/leave.png',
                     backgroundColor: Color(0xFFFFF9C4),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LeaveScreen()
+                        ),
+                      );
+                    },
                   ),
                   CustomButton(
                     label: 'Liên hệ giảng viên',
                     iconPath: 'assets/icons/contact-us.png',
                     backgroundColor: Color(0xFFB2EBF2),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ContactLecturerScreen()
+                        ),
+                      );
+                    },
                   ),
                   CustomButton(
                     label: 'Lịch học',
                     iconPath: 'assets/icons/calendar.png',
                     backgroundColor: Color(0xFFDCEDC8),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ScheduleScreen()
+                        ),
+                      );
+                    },
                   ),
                   CustomButton(
                     label: 'Cập nhật thông tin',
@@ -102,19 +129,40 @@ class AllQuickAccessScreen extends StatelessWidget {
                     label: 'Nhắc nhở điểm danh',
                     iconPath: 'assets/icons/reminder-notes.png',
                     backgroundColor: Color(0xFFFFECB3),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const RemindScreen()
+                        ),
+                      );
+                    },
                   ),
                   CustomButton(
                     label: 'Thống kê điểm danh',
                     iconPath: 'assets/icons/statistics.png',
                     backgroundColor: Color(0xFFFFF3E0),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const DashboardScreen()
+                        ),
+                      );
+                    },
                   ),
                   CustomButton(
                     label: 'Lịch sử điểm danh',
                     iconPath: 'assets/icons/history.png',
                     backgroundColor: Color(0xFFE1F5FE),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AttendanceHistoryScreen()
+                        ),
+                      );
+                    },
                   ),
                   CustomButton(
                     label: 'Cài đặc chung',

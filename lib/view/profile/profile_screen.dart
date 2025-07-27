@@ -5,6 +5,7 @@ import 'package:application/core/constants/app_colors.dart';
 import 'widgets/profile_header.dart';
 import 'widgets/profile_avatar.dart';
 import 'widgets/profile_action_tile.dart';
+import 'package:application/view/profile/update_profile.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -34,7 +35,14 @@ class ProfileScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: ListView(
                 children: [
-                  ProfileActionTile(icon: Icons.edit, title: 'Chỉnh sửa hồ sơ', onTap: () {}),
+                  ProfileActionTile(icon: Icons.edit, title: 'Chỉnh sửa hồ sơ', onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const UpdateProfileScreen()
+                      ),
+                    );
+                  }),
                   ProfileActionTile(icon: Icons.lock_outline, title: 'Đổi mật khẩu', onTap: () {}),
                   ProfileActionTile(icon: Icons.language, title: 'Chuyển đổi ngôn ngữ', onTap: () {}),
                   ProfileActionTile(icon: Icons.history, title: 'Lịch sử đăng nhập', onTap: () {}),

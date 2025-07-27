@@ -33,10 +33,10 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
   });
 
   final Map<String, List<Map<String, String>>> scheduleData = {
-    '19/07': [
+    '30/07': [
       {'time': '09:00 - 17:30', 'title': 'Toán cao cấp 1', 'host': 'Lê Văn Phong', 'location': 'A01'},
     ],
-    '20/07': [
+    '27/07': [
       {'time': '09:00 - 11:30', 'title': 'Toán cao cấp 2', 'host': 'Nguyễn Văn Minh', 'location': 'A03'},
     ],
   };

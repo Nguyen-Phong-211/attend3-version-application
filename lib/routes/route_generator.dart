@@ -6,6 +6,12 @@ import 'package:application/view/notification/notification_screen.dart';
 import 'package:application/view/profile/profile_screen.dart';
 import 'package:application/view/auth/forgot_password_screen.dart';
 import 'package:application/view/auth/otp_verify_screen.dart';
+import 'package:application/view/leave/leave_screen.dart';
+import 'package:application/view/contact_lecturer/contact_lecturer_screen.dart';
+import 'package:application/view/remind/remind_screen.dart';
+import 'package:application/view/dashboard/dashboard_screen.dart';
+import 'package:application/view/attendance/attendance_history_screen.dart';
+import 'package:application/view/attendance/attendance_by_qrcode_screen.dart';
 import 'app_routes.dart';
 
 class RouteGenerator {
@@ -25,6 +31,18 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ForgotPasswordScreen());
       case AppRoutes.otpVerify:
         return MaterialPageRoute(builder: (_) => const OtpVerifyScreen());
+      case AppRoutes.leaveRequest:
+        return MaterialPageRoute(builder: (_) => const LeaveScreen());
+      case AppRoutes.contactLecturer:
+        return MaterialPageRoute(builder: (_) => const ContactLecturerScreen());
+      case AppRoutes.remind:
+        return MaterialPageRoute(builder: (_) => const RemindScreen());
+      case AppRoutes.dashboard:
+        return MaterialPageRoute(builder: (_) => const DashboardScreen());
+      case AppRoutes.attendanceHistory:
+        return MaterialPageRoute(builder: (_) => const AttendanceHistoryScreen());
+      case AppRoutes.scanCode:
+        return MaterialPageRoute(builder: (_) => const AttendanceByQrcodeScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(

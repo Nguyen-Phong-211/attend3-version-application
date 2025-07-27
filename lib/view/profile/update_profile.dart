@@ -4,6 +4,7 @@ import 'package:application/core/constants/app_colors_linear_gradient_constants.
 import 'package:application/core/constants/border_radius.dart';
 import 'package:application/core/theme/text_styles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:application/view/profile/update_profile.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
@@ -19,7 +20,6 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
 
-  String? _selectedGender;
   File? _avatarImage;
 
   void _pickAvatar() async {
@@ -61,10 +61,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   const SizedBox(width: 12),
                   Text(
                     'Cập nhật hồ sơ',
-                    style: TextStyles.titleMedium.copyWith(
-                      color: AppColors.white,
-                      fontWeight: FontWeight.w900,
-                    ),
+                    style: TextStyles.titleScaffold,
                   ),
                 ],
               ),
@@ -95,71 +92,6 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   const SizedBox(height: 16),
                   _buildInputField(_emailController, 'Email', Icons.email),
                   const SizedBox(height: 16),
-
-                  // Gender Dropdown
-                  Row(
-                    children: [
-                      const Icon(Icons.transgender, color: AppColors.primary),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'Giới tính',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                            ),
-                            Row(
-                              children: [
-                                Theme(
-                                  data: Theme.of(context).copyWith(
-                                    unselectedWidgetColor: Colors.grey,
-                                  ),
-                                  child: Transform.scale(
-                                    scale: 1.5,
-                                    child: Radio<String>(
-                                      value: 'Nam',
-                                      groupValue: _selectedGender,
-                                      onChanged: (value) {
-                                        setState(() {
-                                          _selectedGender = value;
-                                        });
-                                      },
-                                      activeColor: AppColors.primary,
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(width: 8),
-                                const Text(
-                                  'Nam',
-                                  style: TextStyle(fontSize: 18),
-                                ),
-                                const SizedBox(width: 24),
-                                Transform.scale(
-                                  scale: 1.5,
-                                  child: Radio<String>(
-                                    value: 'Nữ',
-                                    groupValue: _selectedGender,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _selectedGender = value;
-                                      });
-                                    },
-                                    activeColor: AppColors.primary,
-                                  ),
-                                ),
-                                const SizedBox(width: 8),
-                                const Text(
-                                  'Nữ',
-                                  style: TextStyle(fontSize: 18),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
 
                   const SizedBox(height: 32),
                   // Submit Button
@@ -199,19 +131,31 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     return TextField(
       controller: controller,
       obscureText: isObscure,
-      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+      style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
       decoration: InputDecoration(
         hintText: hint,
         prefixIcon: Icon(icon, color: AppColors.primary),
         filled: true,
         fillColor: Colors.white,
+
         enabledBorder: OutlineInputBorder(
           borderRadius: AppBorderRadius.radius12,
           borderSide: const BorderSide(color: Color(0xFFBDBDBD), width: 2),
         ),
+
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: Colors.red, width: 2),
+        ),
+
         focusedBorder: OutlineInputBorder(
           borderRadius: AppBorderRadius.radius12,
           borderSide: const BorderSide(color: AppColors.inputFocus, width: 2),
+        ),
+
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: Colors.red, width: 2),
         ),
       ),
     );

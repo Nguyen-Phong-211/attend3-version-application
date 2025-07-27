@@ -242,7 +242,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                     ),
                     child: const Text(
                       'Đăng nhập',
-                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: AppColors.textPrimaryButton),
+                      style: TextStyle(fontSize: 13, fontWeight: FontWeight.w900, color: AppColors.textPrimaryButton),
                     ),
                   ),
                 ),

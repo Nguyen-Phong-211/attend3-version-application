@@ -20,7 +20,7 @@ class ProfileAvatar extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 1),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        gradient: AppLinearGradient.linearGradient,
+          color: AppColors.white,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
