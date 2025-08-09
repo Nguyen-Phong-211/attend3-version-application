@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:application/view/auth/login_screen.dart';
 import 'package:application/view/home/home_screen.dart';
-import 'package:application/view/schedule/schedule_screen.dart';
+import 'package:application/view/schedule_studying/schedule_screen.dart';
 import 'package:application/view/notification/notification_screen.dart';
 import 'package:application/view/profile/profile_screen.dart';
 import 'package:application/view/auth/forgot_password_screen.dart';
@@ -12,6 +12,10 @@ import 'package:application/view/remind/remind_screen.dart';
 import 'package:application/view/dashboard/dashboard_screen.dart';
 import 'package:application/view/attendance/attendance_history_screen.dart';
 import 'package:application/view/attendance/attendance_by_qrcode_screen.dart';
+import 'package:application/view/general_setting/general_setting_screen.dart';
+import 'package:application/view/home/all_quick_access.dart';
+import 'package:application/view/term/term_screen.dart';
+import 'package:application/view/feedback/feedback_screen.dart';
 import 'app_routes.dart';
 
 class RouteGenerator {
@@ -43,6 +47,14 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const AttendanceHistoryScreen());
       case AppRoutes.scanCode:
         return MaterialPageRoute(builder: (_) => const AttendanceByQrcodeScreen());
+      case AppRoutes.generalSetting:
+        return MaterialPageRoute(builder: (_) => const SettingsScreen());
+      case AppRoutes.allQuickAccess:
+        return MaterialPageRoute(builder: (_) => const AllQuickAccessScreen());
+      case AppRoutes.term:
+        return MaterialPageRoute(builder: (_) => const TermScreen());
+      case AppRoutes.feedback:
+        return MaterialPageRoute(builder: (_) => const FeedbackScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(

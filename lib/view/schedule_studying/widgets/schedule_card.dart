@@ -19,6 +19,7 @@ class ScheduleCard extends StatelessWidget {
           children: [
             Container(
               width: 6,
+              height: 115,
               decoration: BoxDecoration(
                 color: AppColors.primary,
                 borderRadius: const BorderRadius.only(
@@ -33,7 +34,10 @@ class ScheduleCard extends StatelessWidget {
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: AppColors.white,
-                  borderRadius: AppBorderRadius.radius16,
+                  border: Border.all(
+                    color: AppColors.grey.withValues(alpha: 0.3),
+                  ),
+                  borderRadius: AppBorderRadius.radius14,
                   boxShadow: CardShadows.cardShadowList,
                 ),
                 child: Column(

@@ -4,6 +4,7 @@ import 'package:application/core/constants/app_colors_linear_gradient_constants.
 import 'package:application/core/constants/border_radius.dart';
 import 'package:application/core/theme/text_styles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:application/core/constants/box_shadow_constants.dart';
 import 'package:intl/intl.dart';
 
 class AttendanceHistoryDetailScreen extends StatelessWidget {
@@ -66,10 +67,9 @@ class AttendanceHistoryDetailScreen extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AppColors.white,
+        // border: Border.all(color: AppColors.grey.withValues(alpha: 0.3)),
         borderRadius: AppBorderRadius.radius14,
-        boxShadow: [
-          BoxShadow(color: Colors.grey.shade200, blurRadius: 4),
-        ],
+        boxShadow: CardShadows.cardShadowList,
       ),
       child: Row(
         children: [
@@ -88,10 +88,9 @@ class AttendanceHistoryDetailScreen extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AppColors.white,
+        // border: Border.all(color: AppColors.grey.withValues(alpha: 0.3)),
         borderRadius: AppBorderRadius.radius14,
-        boxShadow: [
-          BoxShadow(color: Colors.grey.shade200, blurRadius: 4),
-        ],
+        boxShadow: CardShadows.cardShadowList,
       ),
       child: Row(
         children: [

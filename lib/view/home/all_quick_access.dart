@@ -1,4 +1,5 @@
 import 'package:application/core/constants/app_colors.dart';
+import 'package:application/view/notification/notification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:application/core/theme/text_styles.dart';
 import 'package:application/view/widgets/custom_button.dart';
@@ -9,10 +10,14 @@ import 'package:application/view/attendance/attendance_by_qrcode_screen.dart';
 import 'package:application/view/profile/update_profile.dart';
 import 'package:application/view/leave/leave_screen.dart';
 import 'package:application/view/contact_lecturer/contact_lecturer_screen.dart';
-import 'package:application/view/schedule/schedule_screen.dart';
+import 'package:application/view/schedule_studying/schedule_screen.dart';
 import 'package:application/view/remind/remind_screen.dart';
 import 'package:application/view/dashboard/dashboard_screen.dart';
 import 'package:application/view/attendance/attendance_history_screen.dart';
+import 'package:application/view/general_setting/general_setting_screen.dart';
+import 'package:application/view/incident_report/incident_report_screen.dart';
+import 'package:application/view/profile/change_language_screen.dart';
+import 'package:application/view/term/term_screen.dart';
 
 class AllQuickAccessScreen extends StatelessWidget {
   const AllQuickAccessScreen({super.key});
@@ -152,6 +157,32 @@ class AllQuickAccessScreen extends StatelessWidget {
                     },
                   ),
                   CustomButton(
+                    label: 'Thông báo',
+                    iconPath: 'assets/icons/notification.png',
+                    backgroundColor: Color(0xFFFFF3E0),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const NotificationScreen()
+                        ),
+                      );
+                    },
+                  ),
+                  CustomButton(
+                    label: 'Chuyển đổi ngôn ngữ',
+                    iconPath: 'assets/icons/translate.png',
+                    backgroundColor: Color(0xFFE3F2FD),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LanguageSwitchScreen()
+                        ),
+                      );
+                    },
+                  ),
+                  CustomButton(
                     label: 'Lịch sử điểm danh',
                     iconPath: 'assets/icons/history.png',
                     backgroundColor: Color(0xFFE1F5FE),
@@ -168,13 +199,27 @@ class AllQuickAccessScreen extends StatelessWidget {
                     label: 'Cài đặc chung',
                     iconPath: 'assets/icons/settings.png',
                     backgroundColor: Color(0xFFE0F7FA),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SettingsScreen()
+                        ),
+                      );
+                    },
                   ),
                   CustomButton(
                     label: 'Báo cáo sự cố',
                     iconPath: 'assets/icons/message.png',
                     backgroundColor: Color(0xFFFFEBEE),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const IncidentReportScreen()
+                        ),
+                      );
+                    },
                   ),
                   CustomButton(
                     label: 'Hướng dẫn sử dụng',
@@ -186,7 +231,14 @@ class AllQuickAccessScreen extends StatelessWidget {
                     label: 'Điều khoản',
                     iconPath: 'assets/icons/terms.png',
                     backgroundColor: Color(0xFFE8F5E9),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const TermScreen()
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),

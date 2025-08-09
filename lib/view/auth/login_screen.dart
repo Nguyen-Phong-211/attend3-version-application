@@ -200,18 +200,15 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                         if (success) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              backgroundColor: Colors.green[50],
-                              behavior: SnackBarBehavior.floating,
                               content: Row(
-                                children: [
-                                  FaIcon(FontAwesomeIcons.circleCheck, color: Colors.green),
-                                  const SizedBox(width: 10),
-                                  Text(
-                                    'Đăng nhập thành công!',
-                                    style: TextStyle(color: Colors.green[900]),
-                                  ),
+                                children: const [
+                                  Icon(Icons.check_circle, color: Colors.green),
+                                  SizedBox(width: 8),
+                                  Text('Đăng nhập thành công', style: TextStyle(fontSize: 10),),
                                 ],
                               ),
+                              behavior: SnackBarBehavior.floating,
+                              duration: Duration(seconds: 4),
                             ),
                           );
                           Navigator.pushReplacementNamed(context, '/home');
@@ -226,7 +223,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                   const SizedBox(width: 10),
                                   Text(
                                     'Số điện thoại hoặc mật khẩu không đúng!',
-                                    style: TextStyle(color: Colors.red[900], fontSize: 14),
+                                    style: TextStyle(color: Colors.red[900], fontSize: 10),
                                   ),
                                 ],
                               ),

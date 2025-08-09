@@ -6,6 +6,7 @@ import 'package:application/core/theme/text_styles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'attendance_history_detail.dart';
+import 'package:application/core/constants/box_shadow_constants.dart';
 
 class AttendanceHistoryScreen extends StatefulWidget {
   const AttendanceHistoryScreen({super.key});
@@ -150,99 +151,89 @@ class AttendanceCard extends StatelessWidget {
     final timeStr = DateFormat('HH:mm dd/MM/yyyy').format(item['timestamp']);
 
     return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => AttendanceHistoryDetailScreen(
-              detail: {
-                'academicYear': '2024-2025',
-                'semester': 'Học kỳ I',
-                'subject': item['subject'],
-                'timestamp': item['timestamp'],
-                'teacher': 'ThS. Nguyễn Văn A',
-                'room': 'P202 - Cơ sở 1',
-                'method': 'QR Code',
-                'status': item['status'],
-              },
-            ),
-          ),
-        );
-      },
       child: Container(
-        margin: const EdgeInsets.only(bottom: 16),
+        margin: const EdgeInsets.only(bottom: 12),
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: AppColors.white,
-          borderRadius: AppBorderRadius.radius14,
-          boxShadow: [
-            BoxShadow(color: Colors.grey.shade300, blurRadius: 4, offset: const Offset(0, 2)),
-          ],
-        ),
-        child: Row(
-          children: [
-            Container(
+          border: Border(
+            left: BorderSide(
               width: 6,
-              height: 100,
-              decoration: BoxDecoration(
-                color: item['status'] == 'Có mặt' ? AppColors.primary : Colors.redAccent,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(14),
-                  bottomLeft: Radius.circular(14),
-                ),
-              ),
+              color: item['status'] == 'Có mặt' ? AppColors.primary : Colors.redAccent,
             ),
-
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        const Icon(Icons.book_outlined, size: 16, color: AppColors.primary),
-                        const SizedBox(width: 6),
-                        Expanded(
-                          child: Text(
-                            item['subject'],
-                            style: TextStyles.titleSmall.copyWith(fontWeight: FontWeight.w600),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 6),
-
-                    // Trạng thái
-                    Row(
-                      children: [
-                        Text(
-                          'Trạng thái: ',
-                          style: TextStyles.bodySmall.copyWith(color: AppColors.grey),
-                        ),
-                        Text(
-                          item['status'],
-                          style: TextStyles.bodyNormal.copyWith(
-                            color: item['status'] == 'Có mặt' ? Colors.green : Colors.red,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 6),
-                    Row(
-                      children: [
-                        const Icon(Icons.access_time, size: 16, color: AppColors.grey),
-                        const SizedBox(width: 6),
-                        Text(timeStr, style: TextStyles.bodySmall.copyWith(color: AppColors.grey)),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
+          ),
+          borderRadius: AppBorderRadius.radius8,
+          boxShadow: CardShadows.cardShadowList,
         ),
+        child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Icon(Icons.book_outlined, size: 16, color: AppColors.primary),
+              const SizedBox(width: 6),
+              Expanded(
+                child: Text(
+                  item['subject'],
+                  style: TextStyles.titleSmall.copyWith(fontWeight: FontWeight.w600),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 6),
+          Row(
+            children: [
+              Text(
+                'Trạng thái: ',
+                style: TextStyles.bodyNormal.copyWith(color: AppColors.grey),
+              ),
+              Text(
+                item['status'],
+                style: TextStyles.bodyNormal.copyWith(
+                  color: item['status'] == 'Có mặt' ? Colors.green : Colors.red,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 6),
+          Row(
+            children: [
+              const Icon(Icons.access_time, size: 16, color: AppColors.grey),
+              const SizedBox(width: 6),
+              Text(timeStr, style: TextStyles.bodyNormal.copyWith(color: AppColors.grey)),
+            ],
+          ),
+
+          const SizedBox(height: 4),
+          Align(
+            alignment: Alignment.centerRight,
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AttendanceHistoryDetailScreen(
+                      detail: {
+                        'academicYear': '2024-2025',
+                        'semester': 'Học kỳ I',
+                        'subject': item['subject'],
+                        'timestamp': item['timestamp'],
+                        'teacher': 'ThS. Nguyễn Văn A',
+                        'room': 'P202 - Cơ sở 1',
+                        'method': 'QR Code',
+                        'status': item['status'],
+                      },
+                    ),
+                  ),
+                );
+              },
+              child: Text('Xem chi tiết', style: TextStyles.titleSmall.copyWith(color: AppColors.textPrimaryColor)),
+            ),
+          ),
+        ],
       ),
+    ),
     );
   }
 }

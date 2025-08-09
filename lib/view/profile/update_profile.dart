@@ -4,7 +4,6 @@ import 'package:application/core/constants/app_colors_linear_gradient_constants.
 import 'package:application/core/constants/border_radius.dart';
 import 'package:application/core/theme/text_styles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:application/view/profile/update_profile.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
@@ -19,6 +18,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _studentCode = TextEditingController();
 
   File? _avatarImage;
 
@@ -86,6 +86,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Column(
                 children: [
+                  _buildInputField(_studentCode, 'Mã số sinh viên', Icons.code),
+                  const SizedBox(height: 16),
                   _buildInputField(_nameController, 'Họ tên', Icons.person),
                   const SizedBox(height: 16),
                   _buildInputField(_phoneController, 'Số điện thoại', Icons.phone),
@@ -93,7 +95,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   _buildInputField(_emailController, 'Email', Icons.email),
                   const SizedBox(height: 16),
 
-                  const SizedBox(height: 32),
+                  const SizedBox(height: 20),
                   // Submit Button
                   SizedBox(
                     width: double.infinity,

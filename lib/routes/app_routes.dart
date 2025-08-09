@@ -1,7 +1,7 @@
 class AppRoutes {
   static const String login = '/login';
   static const String home = '/home';
-  static const String schedule = '/schedule';
+  static const String schedule = '/schedule_studying';
   static const String notification = '/notification';
   static const String profile = '/profile';
   static const String forgotPassword = '/forgotPassword';
@@ -13,4 +13,8 @@ class AppRoutes {
   static const String scanCode = '/scanCode';
   static const String attendanceHistory = '/attendanceHistory';
   static const String attendanceHistoryDetail = '/attendanceHistoryDetail';
+  static const String generalSetting = '/generalSetting';
+  static const String allQuickAccess = '/allQuickAccess';
+  static const String term = '/term';
+  static const String feedback = '/feedback';
 }

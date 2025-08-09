@@ -7,7 +7,8 @@ import 'package:application/view/home/all_quick_access.dart';
 import 'package:application/view/profile/update_profile.dart';
 import 'package:application/view/leave/leave_screen.dart';
 import 'package:application/view/contact_lecturer/contact_lecturer_screen.dart';
-import 'package:application/view/schedule/schedule_screen.dart';
+import 'package:application/view/schedule_studying/schedule_screen.dart';
+import 'package:application/view/qrcode/qrcode_screen.dart';
 
 class QuickAccessGrid extends StatelessWidget {
   const QuickAccessGrid({super.key});
@@ -49,6 +50,7 @@ class QuickAccessGrid extends StatelessWidget {
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 16,
                 children: [
+                  // role student
                   CustomButton(
                       label: 'QR Điểm danh',
                       iconPath: 'assets/icons/scan-code.png',
@@ -78,6 +80,41 @@ class QuickAccessGrid extends StatelessWidget {
                           ),
                         );
                       }),
+                  // role lecturer
+                  CustomButton(
+                      label: 'Tạo QR Code',
+                      iconPath: 'assets/icons/create-qrcode.png',
+                      backgroundColor: Color(0xFFEA4D94),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const QrCodeScreen()
+                          ),
+                        );
+                      }),
+                  CustomButton(
+                      label: 'Duyệt đơn nghỉ phép',
+                      iconPath: 'assets/icons/confirmation.png',
+                      backgroundColor: Color(0xFFC7E6FF),
+                      onTap: () {
+
+                      }),
+                  CustomButton(
+                      label: 'Lịch dạy',
+                      iconPath: 'assets/icons/scheduling.png',
+                      backgroundColor: Color(0xFFD3E7FF),
+                      onTap: () {
+
+                      }),
+                  CustomButton(
+                      label: 'Thống kê',
+                      iconPath: 'assets/icons/dashboard.png',
+                      backgroundColor: Color(0xFFFFFFFF),
+                      onTap: () {
+
+                      }),
+                  // all role
                   CustomButton(
                       label: 'Liên hệ giảng viên',
                       iconPath: 'assets/icons/contact-us.png',

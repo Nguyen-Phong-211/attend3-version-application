@@ -2,10 +2,10 @@ import 'package:application/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:application/routes/app_routes.dart';
 import 'package:application/view/widgets/bottom_nav_menu.dart';
-import 'package:application/view/schedule/widgets/schedule_header.dart';
-import 'package:application/view/schedule/widgets/schedule_view_switcher.dart';
-import 'package:application/view/schedule/widgets/schedule_date_selector.dart';
-import 'package:application/view/schedule/widgets/schedule_card.dart';
+import 'package:application/view/schedule_studying/widgets/schedule_header.dart';
+import 'package:application/view/schedule_studying/widgets/schedule_view_switcher.dart';
+import 'package:application/view/schedule_studying/widgets/schedule_date_selector.dart';
+import 'package:application/view/schedule_studying/widgets/schedule_card.dart';
 
 class ScheduleScreen extends StatefulWidget {
   const ScheduleScreen({super.key});
