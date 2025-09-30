@@ -38,6 +38,8 @@ dependencies:
   camera: ^0.10.5+9
   fl_chart: ^0.66.0
   encrypt: ^5.0.3
+  get_it: ^8.2.0
+  flutter_bloc: ^9.1.1
   flutter_localizations:
     sdk: flutter
 

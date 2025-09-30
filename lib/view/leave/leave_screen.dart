@@ -157,7 +157,7 @@ class _LeaveScreenState extends State<LeaveScreen> {
         color: Colors.white,
         borderRadius: AppBorderRadius.radius12,
         border: Border.all(color: Colors.grey.shade200),
-        boxShadow: CardShadows.cardShadowList,
+        boxShadow: AppShadows.cardShadowList,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

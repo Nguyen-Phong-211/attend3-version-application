@@ -29,7 +29,7 @@ class CustomTile extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.lightGreen,
           borderRadius: AppBorderRadius.radius12,
-          boxShadow: CardShadows.cardShadowList,
+          boxShadow: AppShadows.cardShadowList,
         ),
         child: Row(
           children: [

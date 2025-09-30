@@ -22,7 +22,7 @@ class ProfileActionTile extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
-        boxShadow: CardShadows.cardShadowList,
+        boxShadow: AppShadows.cardShadowList,
       ),
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),

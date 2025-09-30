@@ -52,8 +52,8 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
               children: [
                 Image.asset(
                   'assets/images/logo.png',
-                  height: 80,
-                  width: 80,
+                  height: 50,
+                  width: 50,
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -71,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                 TextField(
                   controller: _phoneController,
                   keyboardType: TextInputType.phone,
-                  style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                  style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
                   inputFormatters: [
                     FilteringTextInputFormatter.digitsOnly,
                     LengthLimitingTextInputFormatter(10),
@@ -119,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                 TextField(
                   controller: _passwordController,
                   obscureText: _obscurePassword,
-                  style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                  style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.lock, color: AppColors.iconInput),
                     errorText: _passwordError,
@@ -175,7 +175,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                     },
                     child: const Text(
                       'Quên mật khẩu',
-                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 12),
+                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 10),
                     ),
                   ),
                 ),

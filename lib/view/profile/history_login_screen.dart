@@ -90,7 +90,7 @@ class LoginHistoryCard extends StatelessWidget {
         ),
         borderRadius: AppBorderRadius.radius8,
         color: AppColors.white,
-        boxShadow: CardShadows.cardShadowList,
+        boxShadow: AppShadows.cardShadowList,
       ),
       padding: const EdgeInsets.all(16),
       child: Column(

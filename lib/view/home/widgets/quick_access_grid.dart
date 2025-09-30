@@ -9,6 +9,7 @@ import 'package:application/view/leave/leave_screen.dart';
 import 'package:application/view/contact_lecturer/contact_lecturer_screen.dart';
 import 'package:application/view/schedule_studying/schedule_screen.dart';
 import 'package:application/view/qrcode/qrcode_screen.dart';
+import 'package:application/view/approval_leave_quest/approval_leave_quest_screen.dart';
 
 class QuickAccessGrid extends StatelessWidget {
   const QuickAccessGrid({super.key});
@@ -98,7 +99,12 @@ class QuickAccessGrid extends StatelessWidget {
                       iconPath: 'assets/icons/confirmation.png',
                       backgroundColor: Color(0xFFC7E6FF),
                       onTap: () {
-
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ApprovalLeaveRequestScreen()
+                          ),
+                        );
                       }),
                   CustomButton(
                       label: 'Lịch dạy',

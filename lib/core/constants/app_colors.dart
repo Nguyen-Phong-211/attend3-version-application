@@ -36,4 +36,7 @@ class AppColors {
   static const textBlack = Colors.black;
   static const border = Color(0xFFE0E0E0);
   static const greenLight = Color(0xFFE0F8E9);
+
+  // Background colors for login screen
+  static const Color backgroundLogin = Color(0xFFF9F9F9);
 }

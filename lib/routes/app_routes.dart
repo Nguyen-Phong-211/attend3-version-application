@@ -17,4 +17,5 @@ class AppRoutes {
   static const String allQuickAccess = '/allQuickAccess';
   static const String term = '/term';
   static const String feedback = '/feedback';
+  static const String approvalLeaveResquest = '/approvalLeaveResquest';
 }

@@ -232,7 +232,7 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
         color: Colors.white,
         borderRadius: AppBorderRadius.radius12,
         border: Border.all(color: Colors.grey.shade200),
-        boxShadow: CardShadows.cardShadowList,
+        boxShadow: AppShadows.cardShadowList,
       ),
       child: Center(
         child: qrData != null

@@ -25,11 +25,25 @@ class TextStyles {
     color: Colors.white,
   );
 
-  static const TextStyle titleHeading = TextStyle(fontSize: 20, fontWeight: FontWeight.w900);
+  static const TextStyle titleHeading = TextStyle(fontSize: 16, fontWeight: FontWeight.w900);
   static const TextStyle titleHeadingMedium = TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: AppColors.white);
 
   static const TextStyle titleScaffold = TextStyle(fontSize: 16, fontWeight: FontWeight.w900, color: AppColors.white);
-  static const TextStyle titleInput = TextStyle(fontSize: 14, fontWeight: FontWeight.w700);
+
+  // Input field
+  static const TextStyle titleInput = TextStyle(
+    fontSize: 11,
+    fontWeight: FontWeight.w700,
+  );
+
+  // Value input field
+  static const TextStyle titleValueInput = TextStyle(fontSize: 12, fontWeight: FontWeight.w500);
+
+  // Button
+  // Button Login
+  static const TextStyle styleButtonLogin = TextStyle(fontSize: 13, fontWeight: FontWeight.w900, color: AppColors.textPrimaryButton);
+  // Button support when login
+  static const TextStyle styleButtonSupport = TextStyle(fontSize: 10, fontWeight: FontWeight.w900, color: AppColors.textPrimaryButton);
 
   static const TextStyle hintTextInput = TextStyle(fontSize: 13, fontWeight: FontWeight.normal);
 

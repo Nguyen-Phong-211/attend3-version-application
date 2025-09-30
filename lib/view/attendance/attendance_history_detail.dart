@@ -69,7 +69,7 @@ class AttendanceHistoryDetailScreen extends StatelessWidget {
         color: AppColors.white,
         // border: Border.all(color: AppColors.grey.withValues(alpha: 0.3)),
         borderRadius: AppBorderRadius.radius14,
-        boxShadow: CardShadows.cardShadowList,
+        boxShadow: AppShadows.cardShadowList,
       ),
       child: Row(
         children: [
@@ -90,7 +90,7 @@ class AttendanceHistoryDetailScreen extends StatelessWidget {
         color: AppColors.white,
         // border: Border.all(color: AppColors.grey.withValues(alpha: 0.3)),
         borderRadius: AppBorderRadius.radius14,
-        boxShadow: CardShadows.cardShadowList,
+        boxShadow: AppShadows.cardShadowList,
       ),
       child: Row(
         children: [

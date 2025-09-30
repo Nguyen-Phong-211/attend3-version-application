@@ -163,7 +163,7 @@ class AttendanceCard extends StatelessWidget {
             ),
           ),
           borderRadius: AppBorderRadius.radius8,
-          boxShadow: CardShadows.cardShadowList,
+          boxShadow: AppShadows.cardShadowList,
         ),
         child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-class CardShadows {
+class AppShadows {
+
+  // BoxShadow for card
   static const BoxShadow cardShadow = BoxShadow(
     color: Color.fromRGBO(0, 0, 0, 0.08),
     offset: Offset(0, 2),
@@ -9,4 +11,13 @@ class CardShadows {
   );
 
   static const List<BoxShadow> cardShadowList = [cardShadow];
+
+  // BoxShadow for card in login screen
+  static const BoxShadow cardLoginShadow = BoxShadow(
+    color: Colors.black12,
+    blurRadius: 12,
+    offset: Offset(0, 6),
+  );
+
+  static const List<BoxShadow> cardLoginShadowList = [cardLoginShadow];
 }

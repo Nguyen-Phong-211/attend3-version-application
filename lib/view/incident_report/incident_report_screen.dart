@@ -252,7 +252,7 @@ class _IncidentReportScreenState extends State<IncidentReportScreen> {
           decoration: BoxDecoration(
             color: AppColors.white,
             borderRadius: BorderRadius.circular(16),
-            boxShadow: CardShadows.cardShadowList,
+            boxShadow: AppShadows.cardShadowList,
           ),
           child: Column(children: children),
         ),

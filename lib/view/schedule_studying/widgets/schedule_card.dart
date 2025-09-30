@@ -38,7 +38,7 @@ class ScheduleCard extends StatelessWidget {
                     color: AppColors.grey.withValues(alpha: 0.3),
                   ),
                   borderRadius: AppBorderRadius.radius14,
-                  boxShadow: CardShadows.cardShadowList,
+                  boxShadow: AppShadows.cardShadowList,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

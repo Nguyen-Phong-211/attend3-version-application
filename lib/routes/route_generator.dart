@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:application/view/auth/login_screen.dart';
+// import 'package:application/view/auth/login_screen.dart';
+import 'package:application/features/auth/presentation/screens/login_screen.dart';
 import 'package:application/view/home/home_screen.dart';
 import 'package:application/view/schedule_studying/schedule_screen.dart';
 import 'package:application/view/notification/notification_screen.dart';
@@ -16,6 +17,7 @@ import 'package:application/view/general_setting/general_setting_screen.dart';
 import 'package:application/view/home/all_quick_access.dart';
 import 'package:application/view/term/term_screen.dart';
 import 'package:application/view/feedback/feedback_screen.dart';
+import 'package:application/view/approval_leave_quest/approval_leave_quest_screen.dart';
 import 'app_routes.dart';
 
 class RouteGenerator {
@@ -55,6 +57,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const TermScreen());
       case AppRoutes.feedback:
         return MaterialPageRoute(builder: (_) => const FeedbackScreen());
+      case AppRoutes.approvalLeaveResquest:
+        return MaterialPageRoute(builder: (_) => const ApprovalLeaveRequestScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(
