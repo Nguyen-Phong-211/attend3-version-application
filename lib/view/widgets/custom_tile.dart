@@ -5,13 +5,13 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:application/core/constants/border_radius.dart';
 import 'package:application/core/constants/box_shadow_constants.dart';
 
-class CustomTile extends StatelessWidget {
+class CustomCardTaskToday extends StatelessWidget {
   final String subject;
   final String teacher;
   final String time;
   final VoidCallback? onTap;
 
-  const CustomTile({
+  const CustomCardTaskToday({
     super.key,
     required this.subject,
     required this.teacher,
@@ -33,7 +33,7 @@ class CustomTile extends StatelessWidget {
         ),
         child: Row(
           children: [
-            const Icon(Icons.access_time, color: Colors.redAccent),
+            const Icon(Icons.access_time, color: Colors.redAccent, size: 16,),
             const SizedBox(width: 8),
             Expanded(
               child: Column(

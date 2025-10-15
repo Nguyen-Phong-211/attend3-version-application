@@ -1,11 +1,14 @@
 class AppRoutes {
+  // auth module
   static const String login = '/login';
+  static const String resetPassword = '/resetPassword';
+  static const String forgotPassword = '/forgotPassword';
+  static const String otpVerify = '/otpVerify';
+
   static const String home = '/home';
   static const String schedule = '/schedule_studying';
   static const String notification = '/notification';
   static const String profile = '/profile';
-  static const String forgotPassword = '/forgotPassword';
-  static const String otpVerify = '/otpVerify';
   static const String contactLecturer = '/contactLecturer';
   static const String leaveRequest = '/leaveRequest';
   static const String remind = '/remind';

@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-// import 'package:application/view/auth/login_screen.dart';
+// auth module
 import 'package:application/features/auth/presentation/screens/login_screen.dart';
-import 'package:application/view/home/home_screen.dart';
+import 'package:application/features/auth/presentation/screens/forgot_password_screen.dart';
+import 'package:application/features/auth/presentation/screens/otp_verify_screen.dart';
+import 'package:application/features/auth/presentation/screens/entry_password.dart';
+// home module
+import 'package:application/features/home/presentation/screen/home_screen.dart';
+import 'package:application/features/home/presentation/screen/all_quick_access.dart';
+
 import 'package:application/view/schedule_studying/schedule_screen.dart';
 import 'package:application/view/notification/notification_screen.dart';
 import 'package:application/view/profile/profile_screen.dart';
-import 'package:application/view/auth/forgot_password_screen.dart';
-import 'package:application/view/auth/otp_verify_screen.dart';
 import 'package:application/view/leave/leave_screen.dart';
 import 'package:application/view/contact_lecturer/contact_lecturer_screen.dart';
 import 'package:application/view/remind/remind_screen.dart';
@@ -14,7 +18,6 @@ import 'package:application/view/dashboard/dashboard_screen.dart';
 import 'package:application/view/attendance/attendance_history_screen.dart';
 import 'package:application/view/attendance/attendance_by_qrcode_screen.dart';
 import 'package:application/view/general_setting/general_setting_screen.dart';
-import 'package:application/view/home/all_quick_access.dart';
 import 'package:application/view/term/term_screen.dart';
 import 'package:application/view/feedback/feedback_screen.dart';
 import 'package:application/view/approval_leave_quest/approval_leave_quest_screen.dart';
@@ -23,8 +26,16 @@ import 'app_routes.dart';
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      // auth module
       case AppRoutes.login:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
+      case AppRoutes.otpVerify:
+        return MaterialPageRoute(builder: (_) => const OtpVerifyScreen());
+      case AppRoutes.forgotPassword:
+        return MaterialPageRoute(builder: (_) => const ForgotPasswordScreen());
+      case AppRoutes.resetPassword:
+        return MaterialPageRoute(builder: (_) => const ResetPasswordScreen());
+
       case AppRoutes.home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case AppRoutes.schedule:
@@ -33,10 +44,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const NotificationScreen());
       case AppRoutes.profile:
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
-      case AppRoutes.forgotPassword:
-        return MaterialPageRoute(builder: (_) => const ForgotPasswordScreen());
-      case AppRoutes.otpVerify:
-        return MaterialPageRoute(builder: (_) => const OtpVerifyScreen());
+
       case AppRoutes.leaveRequest:
         return MaterialPageRoute(builder: (_) => const LeaveScreen());
       case AppRoutes.contactLecturer:

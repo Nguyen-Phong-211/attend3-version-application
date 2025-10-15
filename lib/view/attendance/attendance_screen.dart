@@ -86,7 +86,7 @@ class AttendanceScreen extends StatelessWidget {
               separatorBuilder: (context, index) => const SizedBox(height: 12),
               itemBuilder: (context, index) {
                 final item = sampleSubjects[index];
-                return CustomTile(
+                return CustomCardTaskToday(
                   subject: item['subject']!,
                   teacher: item['teacher']!,
                   time: item['time']!,

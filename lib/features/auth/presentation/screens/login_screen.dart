@@ -1,4 +1,4 @@
-import 'package:application/view/auth/forgot_password_screen.dart';
+import 'package:application/features/auth/presentation/screens/forgot_password_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:application/core/constants/app_colors.dart';
 import 'package:application/features/auth/data/auth_repository.dart';
@@ -10,6 +10,7 @@ import 'package:application/core/constants/app_images.dart';
 import 'package:application/features/widgets/scaffold_messages.dart';
 import 'package:application/features/widgets/input_fields.dart';
 import 'package:application/core/constants/app_icons.dart';
+import 'package:application/core/utils/validator.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -37,8 +38,8 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
 
   Future<void> _handleLogin() async {
     setState(() {
-      _phoneError = authRepository.validatePhoneNumber(_phoneController.text);
-      _passwordError = authRepository.validatePassword(_passwordController.text);
+      _phoneError = Validators.validatePhoneNumber(_phoneController.text);
+      _passwordError = Validators.validatePassword(_passwordController.text);
     });
 
     if (_phoneError != null || _passwordError != null) return;
@@ -145,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                     ),
                     child: const Text(
                       AppLabel.titleButtonLogin,
-                      style: TextStyles.styleButtonLogin,
+                      style: TextStyles.styleButton,
                     ),
                   ),
                 ),

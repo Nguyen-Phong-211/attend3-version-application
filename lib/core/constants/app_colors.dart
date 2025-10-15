@@ -39,4 +39,16 @@ class AppColors {
 
   // Background colors for login screen
   static const Color backgroundLogin = Color(0xFFF9F9F9);
+  // Background colors for button function
+  static const Color backgroundButtonAttendanceQRCode = Color(0xFFD1C4E9);
+  static const Color backgroundButtonRegisterFace = Color(0xFFFFCDD2);
+  static const Color backgroundButtonLeaveRequest = Color(0xFFFFF9C4);
+  static const Color backgroundButtonCreateQRCode = Color(0xFFEA4D94);
+  static const Color backgroundButtonApprovedLeave = Color(0xFFC7E6FF);
+  static const Color backgroundButtonScheduleTeaching = Color(0xFFD3E7FF);
+  static const Color backgroundButtonDashboardForStudent = Color(0xFFFFFFFF);
+  static const Color backgroundButtonContactLecturer = Color(0xFFB2EBF2);
+  static const Color backgroundButtonScheduleLearning = Color(0xFFDCEDC8);
+  static const Color backgroundButtonUpdateInformationForStudent = Color(0xFFFFECB3);
+
 }

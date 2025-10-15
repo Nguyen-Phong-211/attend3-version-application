@@ -21,12 +21,12 @@ class CustomBottomNavBar extends StatelessWidget {
       unselectedItemColor: Colors.grey,
       type: BottomNavigationBarType.fixed,
       selectedLabelStyle: const TextStyle(
-        fontWeight: FontWeight.w900,
-        fontSize: 12,
+        fontWeight: FontWeight.bold,
+        fontSize: 10,
       ),
       unselectedLabelStyle: const TextStyle(
-        fontWeight: FontWeight.w600,
-        fontSize: 11,
+        fontWeight: FontWeight.normal,
+        fontSize: 10,
       ),
       currentIndex: currentIndex,
       onTap: (index) {
@@ -37,11 +37,11 @@ class CustomBottomNavBar extends StatelessWidget {
           }},
       items: [
         const BottomNavigationBarItem(
-          icon: FaIcon(FontAwesomeIcons.house,),
+          icon: FaIcon(FontAwesomeIcons.house, size: 23,),
           label: 'Trang chủ',
         ),
         const BottomNavigationBarItem(
-          icon: FaIcon(FontAwesomeIcons.calendar),
+          icon: FaIcon(FontAwesomeIcons.calendar, size: 23,),
           label: 'Lịch học',
         ),
         BottomNavigationBarItem(
@@ -63,7 +63,7 @@ class CustomBottomNavBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Stack(
             children: [
-              const FaIcon(FontAwesomeIcons.solidBell),
+              const FaIcon(FontAwesomeIcons.solidBell, size: 23,),
               Positioned(
                 right: 0,
                 top: 0,
@@ -84,7 +84,7 @@ class CustomBottomNavBar extends StatelessWidget {
           label: 'Thông báo',
         ),
         const BottomNavigationBarItem(
-          icon: FaIcon(FontAwesomeIcons.circleUser),
+          icon: FaIcon(FontAwesomeIcons.circleUser, size: 23,),
           label: 'Tài khoản',
         ),
       ],

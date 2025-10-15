@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:application/core/theme/text_styles.dart';
+import 'package:application/core/constants/app_label.dart';
 import 'package:application/view/widgets/custom_tile.dart';
 import 'package:application/core/constants/app_colors.dart';
 import 'package:application/view/attendance/attendance_screen.dart';
@@ -33,7 +34,7 @@ class TodaySchedule extends StatelessWidget {
                 );
               },
               child: Text(
-                'Xem tất cả',
+                AppLabel.titleViewAll,
                 style: TextStyles.titleSmall.copyWith(color: AppColors.textPrimaryColor),
               ),
             ),
