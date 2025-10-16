@@ -8,6 +8,7 @@ import 'package:application/core/utils/validator.dart';
 import 'package:application/core/constants/app_colors_linear_gradient_constants.dart';
 import 'package:application/core/constants/border_radius.dart';
 import 'package:application/core/constants/app_icons.dart';
+import 'package:application/features/widgets/loading_overlay.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({super.key});
@@ -23,6 +24,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
 
   bool _obscurePassword = true;
   bool _obscureConfirm = true;
+  bool _isLoading = false;
 
   String? _passwordError;
   String? _confirmPasswordError;
@@ -34,7 +36,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
     super.dispose();
   }
 
-  void _handleSubmit() {
+  Future<void> _handleSubmit() async {
     setState(() {
       _passwordError = Validators.validatePassword(_passwordController.text);
       _confirmPasswordError = Validators.validateConfirmPassword(
@@ -44,7 +46,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
     });
 
     if (_passwordError != null || _confirmPasswordError != null) return;
-
+    setState(() => _isLoading = true);
+    await Future.delayed(Duration(seconds: 2));
+    setState(() => _isLoading = false);
     // Thao tác lưu mật khẩu mới hoặc gọi API
     ScaffoldMessages.informSuccessLogin(
         context, 'Mật khẩu đã được đặt lại thành công!');
@@ -53,89 +57,92 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.white,
-      body: Column(
-        children: [
-          // Gradient Header
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.fromLTRB(16, 48, 16, 24),
-            decoration: const BoxDecoration(
-              gradient: AppLinearGradient.linearGradient,
-              borderRadius: AppBorderRadius.borderRadiusBottomLeftRight24,
-            ),
-            child: Row(
-              children: [
-                const SizedBox(width: 12),
-                Text(AppLabel.titleResetPassword,
-                    style: TextStyles.titleScaffold),
-              ],
-            ),
-          ),
-
-          const SizedBox(height: 30),
-
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Column(
-              children: [
-
-                /* TextField password */
-                InputFields.password(
-                  controller: _passwordController,
-                  obscureText: _obscurePassword,
-                  errorText: _passwordError,
-                  toggleObscure: () {
-                    setState(() {
-                      _obscurePassword = !_obscurePassword;
-                    });
-                  },
-                  labelText: AppLabel.titleNewPassword,
+    return LoadingOverlay(
+        isLoading: _isLoading,
+        child: Scaffold(
+          backgroundColor: AppColors.white,
+          body: Column(
+            children: [
+              // Gradient Header
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.fromLTRB(16, 48, 16, 24),
+                decoration: const BoxDecoration(
+                  gradient: AppLinearGradient.linearGradient,
+                  borderRadius: AppBorderRadius.borderRadiusBottomLeftRight24,
                 ),
-
-                const SizedBox(height: 20),
-
-                /* TextField confirm password */
-                InputFields.password(
-                  controller: _confirmPasswordController,
-                  obscureText: _obscureConfirm,
-                  errorText: _confirmPasswordError,
-                  toggleObscure: () {
-                    setState(() {
-                      _obscureConfirm = !_obscureConfirm;
-                    });
-                  },
-                  labelText: AppLabel.titleConfirmPassword,
+                child: Row(
+                  children: [
+                    const SizedBox(width: 12),
+                    Text(AppLabel.titleResetPassword,
+                        style: TextStyles.titleScaffold),
+                  ],
                 ),
+              ),
 
-                const SizedBox(height: 30),
+              const SizedBox(height: 30),
 
-                SizedBox(
-                  width: double.infinity,
-                  height: 45,
-                  child: ElevatedButton.icon(
-                    onPressed: _handleSubmit,
-                    label: Text(
-                      AppLabel.titleButtonSubmit,
-                      style: TextStyles.styleButton,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Column(
+                  children: [
+
+                    /* TextField password */
+                    InputFields.password(
+                      controller: _passwordController,
+                      obscureText: _obscurePassword,
+                      errorText: _passwordError,
+                      toggleObscure: () {
+                        setState(() {
+                          _obscurePassword = !_obscurePassword;
+                        });
+                      },
+                      labelText: AppLabel.titleNewPassword,
                     ),
-                    icon: AppIcon.iconForgotPassword,
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      backgroundColor: AppColors.backgroundPrimaryButton,
-                      foregroundColor: AppColors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: AppBorderRadius.radius12,
+
+                    const SizedBox(height: 20),
+
+                    /* TextField confirm password */
+                    InputFields.password(
+                      controller: _confirmPasswordController,
+                      obscureText: _obscureConfirm,
+                      errorText: _confirmPasswordError,
+                      toggleObscure: () {
+                        setState(() {
+                          _obscureConfirm = !_obscureConfirm;
+                        });
+                      },
+                      labelText: AppLabel.titleConfirmPassword,
+                    ),
+
+                    const SizedBox(height: 30),
+
+                    SizedBox(
+                      width: double.infinity,
+                      height: 45,
+                      child: ElevatedButton.icon(
+                        onPressed: _handleSubmit,
+                        label: Text(
+                          AppLabel.titleButtonSubmit,
+                          style: TextStyles.styleButton,
+                        ),
+                        icon: AppIcon.iconForgotPassword,
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          backgroundColor: AppColors.backgroundPrimaryButton,
+                          foregroundColor: AppColors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: AppBorderRadius.radius12,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
+        )
     );
   }
 }

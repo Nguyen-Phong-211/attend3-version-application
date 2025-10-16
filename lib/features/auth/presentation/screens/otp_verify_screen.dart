@@ -13,6 +13,8 @@ import 'package:application/features/auth/presentation/bloc/auth_state.dart';
 import 'package:application/features/widgets/scaffold_messages.dart';
 import 'package:application/core/utils/validator.dart';
 import 'entry_password.dart';
+import 'package:application/features/widgets/loading_overlay.dart';
+import 'package:application/features/auth/presentation/providers/auth_provider.dart';
 
 class OtpVerifyScreen extends StatefulWidget {
   const OtpVerifyScreen({super.key});
@@ -41,19 +43,12 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
 
   void _handleVerifyOtp() {
     final otp = _otpControllers.map((c) => c.text).join();
-
     final otpError = Validators.validateOtp(otp);
+
     if (otpError != null) {
       ScaffoldMessages.informErrorLogin(context, otpError);
       return;
     }
-
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const ResetPasswordScreen(),
-      ),
-    );
 
     context.read<AuthBloc>().add(OtpSubmitted(otp));
   }
@@ -61,7 +56,9 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<AuthBloc>().add(OtpStarted());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<AuthBloc>().add(OtpStarted());
+    });
   }
 
   @override
@@ -70,118 +67,137 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
         listener: (context, state) {
           if (state is OtpResent) {
             ScaffoldMessages.informResendOTPSuccess(context, state.message);
+          } else if (state is OtpVerified) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (_) => const ResetPasswordScreen()),
+            );
+          } else if (state is AuthFailure || state is OtpInvalid) {
+            final message = (state is AuthFailure)
+                ? state.message
+                : (state as OtpInvalid).message;
+            ScaffoldMessages.informErrorLogin(context, message);
           }
         },
-        child: Scaffold(
-          backgroundColor: AppColors.white,
-          body: Column(
-            children: [
-              // Gradient Header
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.fromLTRB(16, 48, 16, 24),
-                decoration: const BoxDecoration(
-                  gradient: AppLinearGradient.linearGradient,
-                  borderRadius: AppBorderRadius.borderRadiusBottomLeftRight24,
-                ),
-                child: Row(
-                  children: [
-                    const SizedBox(width: 12),
-                    Text(
-                      AppLabel.titleVerifyOTP,
-                      style: TextStyles.titleScaffold,
-                    ),
-                  ],
-                ),
-              ),
-
-              const SizedBox(height: 48),
-
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      AppLabel.titleInputOTP,
-                      style: TextStyles.titleInput,
-                    ),
-                    const SizedBox(height: 20),
-
-                    // OTP Fields
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: List.generate(
-                        6,
-                        (index) => InputFields.otpField(
-                          index: index,
-                          controller: _otpControllers[index],
-                          context: context,
+        child: BlocBuilder<AuthBloc, AuthState>(
+          builder: (context, state) {
+            final authProvider = context.watch<AuthProvider>();
+            return LoadingOverlay(
+                isLoading: authProvider.loading,
+                child: Scaffold(
+                  backgroundColor: AppColors.white,
+                  body: Column(
+                    children: [
+                      // Gradient Header
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.fromLTRB(16, 48, 16, 24),
+                        decoration: const BoxDecoration(
+                          gradient: AppLinearGradient.linearGradient,
+                          borderRadius: AppBorderRadius.borderRadiusBottomLeftRight24,
+                        ),
+                        child: Row(
+                          children: [
+                            const SizedBox(width: 12),
+                            Text(
+                              AppLabel.titleVerifyOTP,
+                              style: TextStyles.titleScaffold,
+                            ),
+                          ],
                         ),
                       ),
-                    ),
 
-                    const SizedBox(height: 20),
+                      const SizedBox(height: 48),
 
-                    Center(
-                      child: BlocBuilder<AuthBloc, AuthState>(
-                        builder: (context, state) {
-                          if (state is OtpCountdown && state.timeLeft > 0) {
-                            return Text(
-                              "${AppLabel.titleCountDownTime} ${_formatTime(state.timeLeft)}",
-                              style: TextStyles.styleButton.copyWith(
-                                color: AppColors.backgroundPrimaryButton,
-                              ),
-                            );
-                          } else {
-                            return TextButton(
-                              onPressed: () {
-                                context
-                                    .read<AuthBloc>()
-                                    .add(OtpResendRequested());
-                              },
-                              child: const Text(
-                                AppLabel.titleButtonResendOTP,
-                                style: TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w900,
-                                  color: AppColors.backgroundPrimaryButton,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 24),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              AppLabel.titleInputOTP,
+                              style: TextStyles.titleInput,
+                            ),
+                            const SizedBox(height: 20),
+
+                            // OTP Fields
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: List.generate(
+                                6,
+                                    (index) => InputFields.otpField(
+                                  index: index,
+                                  controller: _otpControllers[index],
+                                  context: context,
                                 ),
                               ),
-                            );
-                          }
-                        },
-                      ),
-                    ),
+                            ),
 
-                    const SizedBox(height: 10),
+                            const SizedBox(height: 20),
 
-                    // Confirm button
-                    SizedBox(
-                      width: double.infinity,
-                      height: 45,
-                      child: ElevatedButton.icon(
-                        onPressed: _handleVerifyOtp,
-                        icon: AppIcon.iconVerifyOTP,
-                        label: Text(
-                          AppLabel.titleButtonVerify,
-                          style: TextStyles.styleButton,
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          backgroundColor: AppColors.backgroundPrimaryButton,
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
+                            Center(
+                              child: BlocBuilder<AuthBloc, AuthState>(
+                                builder: (context, state) {
+                                  if (state is OtpCountdown && state.timeLeft > 0) {
+                                    return Text(
+                                      "${AppLabel.titleCountDownTime} ${_formatTime(state.timeLeft)}",
+                                      style: TextStyles.styleButton.copyWith(
+                                        color: AppColors.backgroundPrimaryButton,
+                                      ),
+                                    );
+                                  } else {
+                                    return TextButton(
+                                      onPressed: () {
+                                        context
+                                            .read<AuthBloc>()
+                                            .add(OtpResendRequested());
+                                      },
+                                      child: const Text(
+                                        AppLabel.titleButtonResendOTP,
+                                        style: TextStyle(
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w900,
+                                          color: AppColors.backgroundPrimaryButton,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                },
+                              ),
+                            ),
+
+                            const SizedBox(height: 10),
+
+                            // Confirm button
+                            SizedBox(
+                              width: double.infinity,
+                              height: 45,
+                              child: ElevatedButton.icon(
+                                onPressed: _handleVerifyOtp,
+                                icon: AppIcon.iconVerifyOTP,
+                                label: Text(
+                                  AppLabel.titleButtonVerify,
+                                  style: TextStyles.styleButton,
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  padding: const EdgeInsets.symmetric(vertical: 10),
+                                  backgroundColor: AppColors.backgroundPrimaryButton,
+                                  foregroundColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ));
+                    ],
+                  ),
+                )
+            );
+          },
+        )
+    );
   }
 }

@@ -12,22 +12,28 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   int _timeLeft = 300;
 
   AuthBloc(this.repository) : super(AuthInitial()) {
-    // Processing login
-    on<LoginSubmitted>((event, emit) async {
-      emit(AuthLoading());
-      final success = await repository.login(event.phone, event.password);
-      if (success) {
-        emit(AuthSuccess());
-      } else {
-        emit(AuthFailure(AppLabel.informErrorLogin));
-      }
-    });
+    // Login
+    on<LoginSubmitted>(_onLoginSubmitted);
 
     // Processing OTP
     on<OtpStarted>(_onOtpStarted);
     on<OtpTicked>(_onOtpTicked);
     on<OtpResendRequested>(_onOtpResendRequested);
     on<OtpSubmitted>(_onOtpSubmitted);
+  }
+
+  Future<void> _onLoginSubmitted(LoginSubmitted event, Emitter<AuthState> emit) async {
+    emit(AuthLoading());
+    try {
+      final success = await repository.login(event.phone, event.password);
+      if (success) {
+        emit(AuthSuccess());
+      } else {
+        emit(AuthFailure(AppLabel.informErrorLogin));
+      }
+    } catch (e) {
+      emit(AuthFailure(AppLabel.titleErrorLogin));
+    }
   }
 
   void _onOtpStarted(OtpStarted event, Emitter<AuthState> emit) {

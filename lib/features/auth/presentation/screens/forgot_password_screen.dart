@@ -8,6 +8,9 @@ import 'package:application/core/constants/app_label.dart';
 import 'package:application/features/widgets/input_fields.dart';
 import 'package:application/core/constants/app_icons.dart';
 import 'package:application/core/utils/validator.dart';
+import 'package:application/features/widgets/loading_overlay.dart';
+import 'package:provider/provider.dart';
+import 'package:application/features/auth/presentation/providers/auth_provider.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
@@ -28,6 +31,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   }
 
   Future<void> _handleSubmit() async {
+    FocusScope.of(context).unfocus();
+    final authProvider = context.read<AuthProvider>();
+    authProvider.setLoading(true);
+
     final email = _emailController.text.trim();
     final error = Validators.validateEmail(email);
 
@@ -35,78 +42,88 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       _emailError = error;
     });
 
-    if (error != null) return;
+    if (error != null) {
+      authProvider.setLoading(false);
+      return;
+    }
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) => const OtpVerifyScreen(),
-      ),
-    );
+    await Future.delayed(const Duration(seconds: 1));
+    authProvider.setLoading(false);
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => const OtpVerifyScreen(),
+        ),
+      );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.white,
-      body: Column(
-        children: [
-          // Gradient Header
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.fromLTRB(16, 48, 16, 24),
-            decoration: const BoxDecoration(
-              gradient: AppLinearGradient.linearGradient,
-              borderRadius: AppBorderRadius.borderRadiusBottomLeftRight24,
-            ),
-            child: Row(
-              children: [
-                const SizedBox(width: 12),
-                Text(
-                  AppLabel.titleForgotPassword,
-                  style: TextStyles.titleScaffold
+    final authProvider = context.watch<AuthProvider>();
+    return LoadingOverlay(
+        isLoading: authProvider.loading,
+        child: Scaffold(
+          backgroundColor: AppColors.white,
+          body: Column(
+            children: [
+              // Gradient Header
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.fromLTRB(16, 48, 16, 24),
+                decoration: const BoxDecoration(
+                  gradient: AppLinearGradient.linearGradient,
+                  borderRadius: AppBorderRadius.borderRadiusBottomLeftRight24,
                 ),
-              ],
-            ),
-          ),
-
-          const SizedBox(height: 48),
-
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Column(
-              children: [
-                /* TextField email */
-                InputFields.email(
-                    controller: _emailController,
-                    errorText: _emailError
-                ),
-                const SizedBox(height: 32),
-                SizedBox(
-                  width: double.infinity,
-                  height: 45,
-                  child: ElevatedButton.icon(
-                    onPressed: _handleSubmit,
-                    label: Text(
-                      AppLabel.titleButtonSubmit,
-                      style: TextStyles.styleButton,
+                child: Row(
+                  children: [
+                    const SizedBox(width: 12),
+                    Text(
+                        AppLabel.titleForgotPassword,
+                        style: TextStyles.titleScaffold
                     ),
-                    icon: AppIcon.iconForgotPassword,
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      backgroundColor: AppColors.backgroundPrimaryButton,
-                      foregroundColor: AppColors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: AppBorderRadius.radius12,
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 48),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Column(
+                  children: [
+                    /* TextField email */
+                    InputFields.email(
+                        controller: _emailController,
+                        errorText: _emailError
+                    ),
+                    const SizedBox(height: 32),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 45,
+                      child: ElevatedButton.icon(
+                        onPressed: _handleSubmit,
+                        label: Text(
+                          AppLabel.titleButtonSubmit,
+                          style: TextStyles.styleButton,
+                        ),
+                        icon: AppIcon.iconForgotPassword,
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          backgroundColor: AppColors.backgroundPrimaryButton,
+                          foregroundColor: AppColors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: AppBorderRadius.radius12,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
+        )
     );
   }
 }
