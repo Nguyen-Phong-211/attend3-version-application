@@ -17,4 +17,6 @@ class AppBorderRadius {
     bottomLeft: Radius.circular(24),
     bottomRight: Radius.circular(24),
   );
+
+  static const BorderRadius radius30 = BorderRadius.all(Radius.circular(30));
 }

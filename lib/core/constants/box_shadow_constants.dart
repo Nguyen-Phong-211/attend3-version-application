@@ -30,4 +30,13 @@ class AppShadows {
   );
 
   static const List<BoxShadow> barcodeShadowList = [barcodeShadow];
+
+  // BoxShadow for input field
+  static const BoxShadow inputShadow = BoxShadow(
+    color: Color.fromRGBO(0, 0, 0, 0.05), // Colors.black.withValues(alpha: 0.05),
+    blurRadius: 6,
+    offset: const Offset(0, 2),
+  );
+
+  static const List<BoxShadow> inputShadowList = [inputShadow];
 }

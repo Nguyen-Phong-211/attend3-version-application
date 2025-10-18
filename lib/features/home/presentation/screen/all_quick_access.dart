@@ -7,10 +7,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:application/core/constants/app_colors_linear_gradient_constants.dart';
 import 'package:application/core/constants/border_radius.dart';
 import 'package:application/core/constants/app_label.dart';
-
 import 'package:application/view/attendance/attendance_by_qrcode_screen.dart';
 import 'package:application/view/profile/update_profile.dart';
-import 'package:application/view/leave/leave_screen.dart';
+import 'package:application/features/leave_request/presentation/screens/leave_screen.dart';
 import 'package:application/view/contact_lecturer/contact_lecturer_screen.dart';
 import 'package:application/view/schedule_studying/schedule_screen.dart';
 import 'package:application/view/remind/remind_screen.dart';
@@ -21,11 +20,20 @@ import 'package:application/view/incident_report/incident_report_screen.dart';
 import 'package:application/view/profile/change_language_screen.dart';
 import 'package:application/view/term/term_screen.dart';
 
-class AllQuickAccessScreen extends StatelessWidget {
-  const AllQuickAccessScreen({super.key});
+import '../../../../core/constants/app_images.dart';
+import 'package:application/features/leave_request/presentation/screens/approval_leave_quest_screen.dart';
+import '../../../../view/qrcode/qrcode_screen.dart';
+// import 'package:application/core/constants/feature_permissions.dart';
 
+class AllQuickAccessScreen extends StatelessWidget {
+  // final String currentRole;
+  // const AllQuickAccessScreen({super.key, required this.currentRole});
+  const AllQuickAccessScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    // final accessibleFeatures = allFeatures
+    //     .where((feature) => feature.roles.contains(currentRole))
+    //     .toList();
     return Scaffold(
       backgroundColor: AppColors.white,
       body: Column(
@@ -51,6 +59,34 @@ class AllQuickAccessScreen extends StatelessWidget {
               ],
             ),
           ),
+
+          // TODO: Gant permission then connect API
+          // Expanded(
+          //   child: Padding(
+          //     padding: const EdgeInsets.all(16),
+          //     child: GridView.builder(
+          //       itemCount: accessibleFeatures.length,
+          //       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          //         crossAxisCount: 3,
+          //         crossAxisSpacing: 16,
+          //         mainAxisSpacing: 16,
+          //         childAspectRatio: 1,
+          //       ),
+          //       itemBuilder: (context, index) {
+          //         final feature = accessibleFeatures[index];
+          //         return CustomButton(
+          //           label: feature.label,
+          //           iconPath: feature.iconPath,
+          //           backgroundColor: feature.backgroundColor,
+          //           onTap: () => Navigator.push(
+          //             context,
+          //             MaterialPageRoute(builder: (_) => feature.destination(context)),
+          //           ),
+          //         );
+          //       },
+          //     ),
+          //   ),
+          // ),
 
           Expanded(
             child: Padding(
@@ -92,6 +128,53 @@ class AllQuickAccessScreen extends StatelessWidget {
                         ),
                       );
                     },
+                  ),
+                  CustomButton(
+                    label: AppLabel.titleCreatedQRCode,
+                    iconPath: AppImages.imageIconCreateQRCode,
+                    backgroundColor: AppColors.backgroundButtonCreateQRCode,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const QrCodeScreen()
+                        ),
+                      );
+                    }
+                  ),
+                  CustomButton(
+                    label: AppLabel.titleApprovedLeave,
+                    iconPath: AppImages.imageIconApprovedLeave,
+                    backgroundColor: AppColors.backgroundButtonApprovedLeave,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ApprovalLeaveRequestScreen()
+                        ),
+                      );
+                    }
+                  ),
+                  CustomButton(
+                    label: AppLabel.titleScheduleTeaching,
+                    iconPath: AppImages.imageIconScheduleTeaching,
+                    backgroundColor: AppColors.backgroundButtonScheduleTeaching,
+                    onTap: () {
+
+                    }
+                  ),
+                  CustomButton(
+                    label: AppLabel.titleStaticForStudent,
+                    iconPath: AppImages.imageIconDashboardForStudent,
+                    backgroundColor: AppColors.backgroundButtonDashboardForStudent,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const DashboardScreen()
+                        ),
+                      );
+                    }
                   ),
                   CustomButton(
                     label: 'Liên hệ giảng viên',

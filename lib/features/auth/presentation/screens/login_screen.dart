@@ -14,8 +14,11 @@ import 'package:application/features/auth/injection.dart';
 import 'package:application/features/widgets/input_fields.dart';
 import 'package:application/features/widgets/loading_overlay.dart';
 import 'package:application/features/widgets/scaffold_messages.dart';
-import 'package:application/features/widgets/support_button.dart';
+import 'package:application/features/auth/presentation/widgets/support_button.dart';
 import 'forgot_password_screen.dart';
+import 'package:application/core/constants/app_button.dart';
+import 'package:application/core/constants/app_icons.dart';
+import 'package:application/routes/app_routes.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -70,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
         listener: (context, state) {
           if (state is AuthSuccess) {
             ScaffoldMessages.informSuccessLogin(context, AppLabel.informSuccessLogin);
-            Navigator.pushReplacementNamed(context, '/home');
+            Navigator.pushReplacementNamed(context, AppRoutes.home);
           } else if (state is AuthFailure) {
             ScaffoldMessages.informErrorLogin(context, state.message);
           }
@@ -141,22 +144,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         const SizedBox(height: 12),
 
-                        SizedBox(
-                          width: double.infinity,
-                          height: 45,
-                          child: ElevatedButton(
-                            onPressed: isLoading ? null : () => _handleLogin(context),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.backgroundPrimaryButton,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12)),
-                            ),
-                            child: const Text(
-                              AppLabel.titleButtonLogin,
-                              style: TextStyles.styleButton,
-                            ),
-                          ),
+                        AppButton(
+                          label: AppLabel.titleButtonLogin,
+                          icon: AppIcon.iconForgotPassword,
+                          onPressed: isLoading ? null : () => _handleLogin(context)
                         ),
+
                         const SizedBox(height: 40),
                         const SupportButton(),
                       ],

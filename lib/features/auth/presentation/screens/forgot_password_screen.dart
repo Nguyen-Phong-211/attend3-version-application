@@ -11,6 +11,7 @@ import 'package:application/core/utils/validator.dart';
 import 'package:application/features/widgets/loading_overlay.dart';
 import 'package:provider/provider.dart';
 import 'package:application/features/auth/presentation/providers/auth_provider.dart';
+import 'package:application/core/constants/app_button.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
@@ -98,25 +99,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         errorText: _emailError
                     ),
                     const SizedBox(height: 32),
-                    SizedBox(
-                      width: double.infinity,
-                      height: 45,
-                      child: ElevatedButton.icon(
-                        onPressed: _handleSubmit,
-                        label: Text(
-                          AppLabel.titleButtonSubmit,
-                          style: TextStyles.styleButton,
-                        ),
-                        icon: AppIcon.iconForgotPassword,
-                        style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          backgroundColor: AppColors.backgroundPrimaryButton,
-                          foregroundColor: AppColors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: AppBorderRadius.radius12,
-                          ),
-                        ),
-                      ),
+
+                    AppButton(
+                      label: AppLabel.titleButtonSubmit,
+                      icon: AppIcon.iconForgotPassword,
+                      onPressed: _handleSubmit,
                     ),
                   ],
                 ),

@@ -58,4 +58,7 @@ class AppLabel {
 
   //
   static const titleAllAccessQuickly = 'Tất cả truy cập nhanh';
+  static const titleErrorLogin = 'Đã có lỗi xảy ra';
+  //
+  static const titleResetPasswordSuccess = 'Mật khẩu đã được đặt lại thành công';
 }

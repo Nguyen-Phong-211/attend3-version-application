@@ -9,6 +9,7 @@ import 'package:application/core/constants/app_colors_linear_gradient_constants.
 import 'package:application/core/constants/border_radius.dart';
 import 'package:application/core/constants/app_icons.dart';
 import 'package:application/features/widgets/loading_overlay.dart';
+import 'package:application/core/constants/app_button.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({super.key});
@@ -49,10 +50,12 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
     setState(() => _isLoading = true);
     await Future.delayed(Duration(seconds: 2));
     setState(() => _isLoading = false);
-    // Thao tác lưu mật khẩu mới hoặc gọi API
+
+    // Action to save new password or call API
     ScaffoldMessages.informSuccessLogin(
-        context, 'Mật khẩu đã được đặt lại thành công!');
-    Navigator.pushReplacementNamed(context, '/login'); // return login screen
+        context, AppLabel.titleResetPasswordSuccess
+    );
+    Navigator.pushReplacementNamed(context, '/login');
   }
 
   @override
@@ -117,25 +120,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
 
                     const SizedBox(height: 30),
 
-                    SizedBox(
-                      width: double.infinity,
-                      height: 45,
-                      child: ElevatedButton.icon(
-                        onPressed: _handleSubmit,
-                        label: Text(
-                          AppLabel.titleButtonSubmit,
-                          style: TextStyles.styleButton,
-                        ),
-                        icon: AppIcon.iconForgotPassword,
-                        style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          backgroundColor: AppColors.backgroundPrimaryButton,
-                          foregroundColor: AppColors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: AppBorderRadius.radius12,
-                          ),
-                        ),
-                      ),
+                    AppButton(
+                      label: AppLabel.titleButtonSubmit,
+                      icon: AppIcon.iconForgotPassword,
+                      onPressed: _handleSubmit,
                     ),
                   ],
                 ),

@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:application/core/theme/text_styles.dart';
 import 'package:application/core/constants/app_label.dart';
-import 'package:application/view/widgets/custom_tile.dart';
 import 'package:application/core/constants/app_colors.dart';
+import 'package:application/view/widgets/custom_tile.dart';
 import 'package:application/view/attendance/attendance_screen.dart';
 import 'package:application/view/attendance/attendance_by_camera_screen.dart';
 
 class TodaySchedule extends StatelessWidget {
-  const TodaySchedule({super.key});
+  final List<String> schedules; // data from BLoC
+
+  const TodaySchedule({super.key, required this.schedules});
 
   String getTodayFormatted() {
-    DateTime now = DateTime.now();
-    return DateFormat('dd/MM/yyyy').format(now);
+    return DateFormat('dd/MM/yyyy').format(DateTime.now());
   }
 
   @override
@@ -23,14 +24,13 @@ class TodaySchedule extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Hôm nay, ${getTodayFormatted()}. Bạn sẽ', style: TextStyles.titleMedium.copyWith(fontWeight: FontWeight.w900)),
+            Text('Hôm nay, ${getTodayFormatted()}. Bạn sẽ',
+                style: TextStyles.titleMedium.copyWith(fontWeight: FontWeight.w900)),
             GestureDetector(
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => const AttendanceScreen(),
-                  ),
+                  MaterialPageRoute(builder: (context) => const AttendanceScreen()),
                 );
               },
               child: Text(
@@ -42,41 +42,41 @@ class TodaySchedule extends StatelessWidget {
         ),
         const SizedBox(height: 12),
 
-        CustomCardTaskToday(
-          subject: 'Toán cao cấp 1',
-          teacher: 'Nguyễn Văn A',
-          time: '13:00 07/07/2025',
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const AttendanceByCameraScreen(
-                  subject: 'Toán cao cấp 1',
-                  teacher: 'Nguyễn Văn A',
-                  time: '13:00 07/07/2025',
+        if (schedules.isEmpty)
+          const Text(
+            'No schedule today.', // TODO: Replace if API returns no data
+            style: TextStyle(color: Colors.grey),
+          )
+        else
+          Column(
+            children: schedules.map((schedule) {
+              // TODO: Replace mock split logic when API returns structured data
+              final subject = schedule;
+              final teacher = 'Unknown'; // TODO: from API
+              final time = '---'; // TODO: from API
+
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: CustomCardTaskToday(
+                  subject: subject,
+                  teacher: teacher,
+                  time: time,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AttendanceByCameraScreen(
+                          subject: subject,
+                          teacher: teacher,
+                          time: time,
+                        ),
+                      ),
+                    );
+                  },
                 ),
-              ),
-            );
-          },
-        ),
-        const SizedBox(height: 8),
-        CustomCardTaskToday(
-          subject: 'Toán ứng dụng',
-          teacher: 'Nguyễn Hồng B',
-          time: '15:00 07/07/2025',
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const AttendanceByCameraScreen(
-                  subject: 'Toán ứng dụng',
-                  teacher: 'Nguyễn Hồng B',
-                  time: '15:00 07/07/2025',
-                ),
-              ),
-            );
-          },
-        ),
+              );
+            }).toList(),
+          ),
       ],
     );
   }

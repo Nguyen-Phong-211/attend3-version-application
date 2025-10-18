@@ -2,8 +2,8 @@ import 'package:application/view/auth/forgot_password_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:application/core/constants/app_colors.dart';
-import 'package:application/core/utils/auth_provider.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:application/core/utils/auth_provider.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:application/core/theme/text_styles.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -21,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
   String? _phoneError;
   String? _passwordError;
 
-  final AuthProvider authProvider = AuthProvider();
+  // final AuthProvider authProvider = AuthProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -187,49 +187,49 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                   child: ElevatedButton(
                     onPressed: () async {
                       setState(() {
-                        _phoneError = authProvider.validatePhoneNumber(_phoneController.text);
-                        _passwordError = authProvider.validatePassword(_passwordController.text);
+                        // _phoneError = authProvider.validatePhoneNumber(_phoneController.text);
+                        // _passwordError = authProvider.validatePassword(_passwordController.text);
                       });
 
                       if (_phoneError == null && _passwordError == null) {
-                        bool success = await authProvider.login(
-                          _phoneController.text,
-                          _passwordController.text,
-                        );
+                        // bool success = await authProvider.login(
+                        //   _phoneController.text,
+                        //   _passwordController.text,
+                        // );
 
-                        if (success) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Row(
-                                children: const [
-                                  Icon(Icons.check_circle, color: Colors.green),
-                                  SizedBox(width: 8),
-                                  Text('Đăng nhập thành công', style: TextStyle(fontSize: 10),),
-                                ],
-                              ),
-                              behavior: SnackBarBehavior.floating,
-                              duration: Duration(seconds: 4),
-                            ),
-                          );
-                          Navigator.pushReplacementNamed(context, '/home');
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              backgroundColor: Colors.red[50],
-                              behavior: SnackBarBehavior.floating,
-                              content: Row(
-                                children: [
-                                  FaIcon(FontAwesomeIcons.circleExclamation, color: Colors.red),
-                                  const SizedBox(width: 10),
-                                  Text(
-                                    'Số điện thoại hoặc mật khẩu không đúng!',
-                                    style: TextStyle(color: Colors.red[900], fontSize: 10),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        }
+                        // if (success) {
+                        //   ScaffoldMessenger.of(context).showSnackBar(
+                        //     SnackBar(
+                        //       content: Row(
+                        //         children: const [
+                        //           Icon(Icons.check_circle, color: Colors.green),
+                        //           SizedBox(width: 8),
+                        //           Text('Đăng nhập thành công', style: TextStyle(fontSize: 10),),
+                        //         ],
+                        //       ),
+                        //       behavior: SnackBarBehavior.floating,
+                        //       duration: Duration(seconds: 4),
+                        //     ),
+                        //   );
+                        //   Navigator.pushReplacementNamed(context, '/home');
+                        // } else {
+                        //   ScaffoldMessenger.of(context).showSnackBar(
+                        //     SnackBar(
+                        //       backgroundColor: Colors.red[50],
+                        //       behavior: SnackBarBehavior.floating,
+                        //       content: Row(
+                        //         children: [
+                        //           FaIcon(FontAwesomeIcons.circleExclamation, color: Colors.red),
+                        //           const SizedBox(width: 10),
+                        //           Text(
+                        //             'Số điện thoại hoặc mật khẩu không đúng!',
+                        //             style: TextStyle(color: Colors.red[900], fontSize: 10),
+                        //           ),
+                        //         ],
+                        //       ),
+                        //     ),
+                        //   );
+                        // }
                       }
                     },
 

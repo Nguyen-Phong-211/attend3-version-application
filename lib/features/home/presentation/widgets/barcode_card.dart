@@ -25,7 +25,7 @@ class BarcodeCard extends StatelessWidget {
             style: TextStyles.titleSmall,
           ),
           const SizedBox(height: 12),
-          // barcode or qr code
+          // TODO: Replace this local image with QR code image from API
           Center(child: Image.asset('assets/images/barcode.jpg', height: 50)),
           const SizedBox(height: 4),
           const Text(

@@ -13,4 +13,7 @@ class AppImages {
   static const imageIconContactLecturer = 'assets/icons/contact-us.png';
   static const imageIconScheduleLearning = 'assets/icons/calendar.png';
   static const imageIconUpdateInformationForStudent = 'assets/icons/literature.png';
+
+  // Image icon loading
+  static const imageIconLoading  = 'assets/icons/loading.gif';
 }

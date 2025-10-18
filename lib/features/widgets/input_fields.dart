@@ -34,20 +34,20 @@ class InputFields {
                 const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Color(0xFFBDBDBD), width: 2),
+              borderSide: const BorderSide(color: Color(0xFFBDBDBD), width: 1.5),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide:
-                  const BorderSide(color: AppColors.inputFocus, width: 2),
+                  const BorderSide(color: AppColors.inputFocus, width: 1.5),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Colors.red, width: 2),
+              borderSide: const BorderSide(color: Colors.red, width: 1.5),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Colors.red, width: 2),
+              borderSide: const BorderSide(color: Colors.red, width: 1.5),
             ),
           ),
         ),
@@ -89,20 +89,20 @@ class InputFields {
                 const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Color(0xFFBDBDBD), width: 2),
+              borderSide: const BorderSide(color: Color(0xFFBDBDBD), width: 1.5),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide:
-                  const BorderSide(color: AppColors.inputFocus, width: 2),
+                  const BorderSide(color: AppColors.inputFocus, width: 1.5),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Colors.red, width: 2),
+              borderSide: const BorderSide(color: Colors.red, width: 1.5),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Colors.red, width: 2),
+              borderSide: const BorderSide(color: Colors.red, width: 1.5),
             ),
           ),
         ),
@@ -133,27 +133,27 @@ class InputFields {
             fillColor: Colors.white,
             enabledBorder: OutlineInputBorder(
               borderRadius: AppBorderRadius.radius12,
-              borderSide: const BorderSide(color: Color(0xFFBDBDBD), width: 2),
+              borderSide: const BorderSide(color: Color(0xFFBDBDBD), width: 1.5),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: AppBorderRadius.radius12,
               borderSide: const BorderSide(
                 color: AppColors.inputFocus,
-                width: 2.0,
+                  width: 1.5
               ),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: AppBorderRadius.radius12,
               borderSide: const BorderSide(
                 color: Colors.red,
-                width: 2.0,
+                width: 1.5
               ),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: AppBorderRadius.radius12,
               borderSide: const BorderSide(
                 color: Colors.red,
-                width: 2.0,
+                width: 1.5
               ),
             ),
           ),
@@ -182,11 +182,11 @@ class InputFields {
           fillColor: Colors.white,
           enabledBorder: OutlineInputBorder(
             borderRadius: AppBorderRadius.radius12,
-            borderSide: const BorderSide(color: Color(0xFFBDBDBD), width: 2),
+            borderSide: const BorderSide(color: Color(0xFFBDBDBD), width: 1.5),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: AppBorderRadius.radius12,
-            borderSide: const BorderSide(color: AppColors.inputFocus, width: 2),
+            borderSide: const BorderSide(color: AppColors.inputFocus, width: 1.5),
           ),
         ),
         onChanged: (value) {

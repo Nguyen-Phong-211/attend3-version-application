@@ -51,4 +51,7 @@ class AppColors {
   static const Color backgroundButtonScheduleLearning = Color(0xFFDCEDC8);
   static const Color backgroundButtonUpdateInformationForStudent = Color(0xFFFFECB3);
 
+  //
+  static const Color grey300 = Color(0xFFE0E0E0);
+
 }

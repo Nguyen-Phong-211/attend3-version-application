@@ -48,7 +48,7 @@ class TextStyles {
   // Button support when login
   static const TextStyle styleButtonSupport = TextStyle(fontSize: 10, fontWeight: FontWeight.w900, color: AppColors.textPrimaryButton);
 
-  static const TextStyle hintTextInput = TextStyle(fontSize: 13, fontWeight: FontWeight.normal);
+  static const TextStyle hintTextInput = TextStyle(fontSize: 10, fontWeight: FontWeight.normal);
 
   static const TextStyle titleMedium = TextStyle(fontSize: 12, fontWeight: FontWeight.w900);
   static const TextStyle titleSmall = TextStyle(fontSize: 10, fontWeight: FontWeight.w700);
@@ -58,4 +58,6 @@ class TextStyles {
   static const TextStyle bodySuperSmall = TextStyle(fontSize: 8, fontWeight: FontWeight.w700);
 
   static const TextStyle bodyNormal8 = TextStyle(fontSize: 8, fontWeight: FontWeight.normal);
+
+  static const TextStyle bodyNormal9 = TextStyle(fontSize: 9, fontWeight: FontWeight.normal);
 }

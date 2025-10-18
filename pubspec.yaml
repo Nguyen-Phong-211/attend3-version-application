@@ -40,6 +40,7 @@ dependencies:
   encrypt: ^5.0.3
   get_it: ^8.2.0
   flutter_bloc: ^9.1.1
+  animated_custom_dropdown: ^3.1.1
   flutter_localizations:
     sdk: flutter
 
@@ -93,6 +94,7 @@ flutter:
    - assets/images/avatar.png
    - assets/images/barcode.jpg
    - assets/images/face-scan.gif
+   - assets/images/bg-date-field.jpg
 
    - assets/icons/calendar.png
    - assets/icons/contact-us.png
@@ -113,6 +115,8 @@ flutter:
    - assets/icons/create-qrcode.png
    - assets/icons/dashboard.png
    - assets/icons/scheduling.png
+
+   - assets/icons/loading.gif
 
    - assets/fonts/Quicksand/
 

@@ -3,16 +3,17 @@ import 'package:application/core/theme/text_styles.dart';
 import 'package:application/core/constants/app_colors.dart';
 import 'package:application/core/constants/app_label.dart';
 import 'package:application/core/constants/app_images.dart';
-
 import 'package:application/view/widgets/custom_button.dart';
-import 'package:application/view/home/all_quick_access.dart';
+import 'package:application/features/home/presentation/screen/all_quick_access.dart';
 import 'package:application/view/profile/update_profile.dart';
-import 'package:application/view/leave/leave_screen.dart';
+import 'package:application/features/leave_request/presentation/screens/leave_screen.dart';
 import 'package:application/view/contact_lecturer/contact_lecturer_screen.dart';
 import 'package:application/view/schedule_studying/schedule_screen.dart';
 import 'package:application/view/qrcode/qrcode_screen.dart';
 import 'package:application/view/approval_leave_quest/approval_leave_quest_screen.dart';
 import 'package:application/view/attendance/attendance_by_qrcode_screen.dart';
+
+import '../../../../view/dashboard/dashboard_screen.dart';
 
 class QuickAccessGrid extends StatelessWidget {
   const QuickAccessGrid({super.key});
@@ -121,7 +122,12 @@ class QuickAccessGrid extends StatelessWidget {
                       iconPath: AppImages.imageIconDashboardForStudent,
                       backgroundColor: AppColors.backgroundButtonDashboardForStudent,
                       onTap: () {
-
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const DashboardScreen()
+                          ),
+                        );
                       }),
                   // all role
                   CustomButton(

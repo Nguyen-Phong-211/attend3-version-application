@@ -1,5 +1,9 @@
 ### The project follows the BloC and FMV architecture models along with the architectures defined in the get_it library. In addition, the project hopes to significantly reduce memory when deployed in real life.
 
+<p>
+This is the cross-platform mobile application version for Android and iOS of the project: <a href="https://github.com/Nguyen-Phong-211/student-attendance-application-using-3D-facial-recognition-and-QR-code-scanning"> here </a>
+</p>
+
 <h2>📂 Project Structure</h2>
 
 <pre>
@@ -16,7 +20,8 @@ lib/
 │   ├── <b>constants/</b>             # Static values
 │   │   ├── app_colors.dart
 │   │   ├── app_strings.dart
-│   │   ├── api_endpoints.dart
+│   │   ├── api_labels.dart
+│   │   ├── api_images.dart
 │   │   └── app_icons.dart
 │   │
 │   ├── <b>utils/</b>                 # Helper & utility functions
@@ -24,12 +29,12 @@ lib/
 │   │   ├── date_utils.dart
 │   │   ├── format_utils.dart
 │   │   └── permission_utils.dart
-│   │
-│   ├── <b>services/</b>              # Services (API, local, notification, etc.)
+│   ├── <b>network/</b>                 # Config network client
 │   │   ├── api_service.dart
-│   │   ├── secure_storage_service.dart
-│   │   ├── local_storage_service.dart
-│   │   └── notification_service.dart
+│   │   ├── api_response.dart
+│   │   ├── api_exception.dart
+│   │   └── app_client.dart
+│   │
 │   │
 │   └── <b>theme/</b>                 # Theme setup
 │       ├── app_theme.dart
@@ -43,7 +48,7 @@ lib/
 │   └── ...
 │
 ├── <b>providers/</b>                 # Provider classes for state mgmt
-│   └── auth_provider.dart
+│   └── app_provider.dart
 │
 ├── <b>routes/</b>                    # App routing management
 │   ├── app_routes.dart
@@ -52,9 +57,12 @@ lib/
 ├── <b>features/</b>                  # Feature-first structure (FMV + Bloc)
 │   ├── <b>auth/</b>                  # Authentication module
 │   │   ├── <b>data/</b>              # Repository & data sources
-│   │   │   └── auth_repository.dart
+│   │   │   ├── auth_repository.dart
+│   │   │   └── auth_repository_impl.dart
+│   │   ├── <b>data_sources/</b>              # Call API
+│   │   │   └── auth_remote_data_source.dart
 │   │   │
-│   │   ├── <b>domain/</b>            # Entities, usecases (if applying clean arch)
+│   │   ├── <b>domain/</b>            # Entities, usecases, repository folder (if applying clean arch)
 │   │   │   └── ...
 │   │   │
 │   │   ├── <b>presentation/</b>      # UI + State Management (Bloc)
