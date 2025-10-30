@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:application/core/constants/app_colors.dart';
 import 'package:application/core/constants/border_radius.dart';
 import 'package:application/core/theme/text_styles.dart';
+import 'package:application/core/constants/app_images.dart';
+import 'package:application/core/constants/app_label.dart';
 
 class LeaveDateField extends StatelessWidget {
   final String hint;
@@ -34,13 +37,13 @@ class LeaveDateField extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.2),
-                    blurRadius: 20,
-                    offset: const Offset(0, -4),
-                  ),
-                ],
+                // boxShadow: [
+                //   BoxShadow(
+                //     color: Colors.black.withValues(alpha: 0.2),
+                //     blurRadius: 20,
+                //     offset: const Offset(0, -4),
+                //   ),
+                // ],
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -51,7 +54,7 @@ class LeaveDateField extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 20),
                     decoration: BoxDecoration(
                       image: const DecorationImage(
-                        image: AssetImage('assets/images/bg-date-field.jpg'),
+                        image: AssetImage(AppImages.imageBackgroundDateField),
                         fit: BoxFit.cover,
                       ),
                       gradient: LinearGradient(
@@ -80,7 +83,7 @@ class LeaveDateField extends StatelessWidget {
                         ),
                         const SizedBox(height: 8),
                         const Text(
-                          "Chúc bạn ngày mới vui vẻ và tốt lành! 😘",
+                          AppLabel.titleDateField,
                           style: TextStyle(
                             color: Colors.white70,
                             fontSize: 12,
@@ -100,14 +103,14 @@ class LeaveDateField extends StatelessWidget {
 
                   const Divider(height: 1),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                     child: Row(
                       children: [
                         Expanded(
                           child: TextButton(
                             onPressed: () => Navigator.pop(context),
                             child: const Text(
-                              "CANCEL",
+                              AppLabel.titleButtonCancel,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.grey,
@@ -119,10 +122,11 @@ class LeaveDateField extends StatelessWidget {
                           child: TextButton(
                             onPressed: () => Navigator.pop(context, tempDate),
                             child: const Text(
-                              "OK",
+                              AppLabel.titleButtonOK,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: AppColors.primary,
+                                // backgroundColor: Color(00)
                               ),
                             ),
                           ),
@@ -167,19 +171,19 @@ class LeaveDateField extends StatelessWidget {
             ),
           ],
         ),
-        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
         child: Row(
           children: [
-            const Icon(Icons.date_range, color: AppColors.primary, size: 20),
+            const Icon(Icons.date_range, color: AppColors.primary, size: 12),
             const SizedBox(width: 12),
             Text(
               displayText,
-              style: TextStyles.titleInput.copyWith(
+              style: TextStyles.hintTextInput.copyWith(
                 color: date != null ? AppColors.black : Colors.grey,
               ),
             ),
             const Spacer(),
-            const Icon(Icons.expand_more, color: Colors.grey, size: 18),
+            const FaIcon(FontAwesomeIcons.circleChevronDown, size: 12, color: AppColors.primary),
           ],
         ),
       ),

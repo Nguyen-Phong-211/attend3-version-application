@@ -53,5 +53,7 @@ class AppColors {
 
   //
   static const Color grey300 = Color(0xFFE0E0E0);
-
+  // Border color for button outline
+  static const Color borderButtonOutline = Color(0xFF2F80ED);
+  static const Color titleButtonOutline = Color(0xFF2F80ED);
 }

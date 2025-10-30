@@ -19,10 +19,9 @@ import 'package:application/view/general_setting/general_setting_screen.dart';
 import 'package:application/view/incident_report/incident_report_screen.dart';
 import 'package:application/view/profile/change_language_screen.dart';
 import 'package:application/view/term/term_screen.dart';
-
-import '../../../../core/constants/app_images.dart';
+import 'package:application/core/constants/app_images.dart';
 import 'package:application/features/leave_request/presentation/screens/approval_leave_quest_screen.dart';
-import '../../../../view/qrcode/qrcode_screen.dart';
+import 'package:application/view/qrcode/qrcode_screen.dart';
 // import 'package:application/core/constants/feature_permissions.dart';
 
 class AllQuickAccessScreen extends StatelessWidget {

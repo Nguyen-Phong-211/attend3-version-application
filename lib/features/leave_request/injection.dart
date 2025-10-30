@@ -36,3 +36,25 @@ void initLeaveRequestModule() {
     );
   }
 }
+
+// TODO: Injection for approved leave request
+
+void initApprovalModule() {
+  if (!sl.isRegistered<ApprovalRemoteDataSource>()) {
+    sl.registerLazySingleton<ApprovalRemoteDataSource>(
+          () => ApprovalRemoteDataSource(),
+    );
+  }
+
+  if (!sl.isRegistered<ApprovalRepository>()) {
+    sl.registerLazySingleton<ApprovalRepository>(
+          () => ApprovalRepositoryImpl(remote: sl()),
+    );
+  }
+
+  if (!sl.isRegistered<ApprovalBloc>()) {
+    sl.registerFactory<ApprovalBloc>(
+          () => ApprovalBloc(repository: sl<ApprovalRepository>()),
+    );
+  }
+}

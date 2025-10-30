@@ -65,7 +65,7 @@ class _LeaveDropdownState extends State<LeaveDropdown> {
         ),
         child: Row(
           children: [
-            FaIcon(widget.iconData, color: AppColors.primary, size: 18),
+            FaIcon(widget.iconData, color: AppColors.primary, size: 12),
             const SizedBox(width: 12),
             Expanded(
               child: Text(
@@ -75,7 +75,7 @@ class _LeaveDropdownState extends State<LeaveDropdown> {
                     : TextStyles.titleInput.copyWith(fontWeight: FontWeight.w500),
               ),
             ),
-            const FaIcon(FontAwesomeIcons.chevronDown, size: 12, color: AppColors.black),
+            const FaIcon(FontAwesomeIcons.circleChevronDown, size: 12, color: AppColors.primary),
           ],
         ),
       ),

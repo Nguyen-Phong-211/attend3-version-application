@@ -6,4 +6,5 @@ void initAppInjection() {
   initAuthModule();
   initHomeModule();
   initLeaveRequestModule();
+  initApprovalModule();
 }

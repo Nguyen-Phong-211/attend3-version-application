@@ -12,6 +12,8 @@ import 'package:application/features/home/presentation/bloc/home_bloc.dart';
 import 'package:application/features/auth/presentation/providers/auth_provider.dart';
 import 'package:application/features/leave_request/presentation/provider/leave_request_provider.dart';
 
+import 'features/leave_request/presentation/bloc/leave_request_bloc.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('vi_VN', null);
@@ -29,6 +31,7 @@ void main() async {
         ChangeNotifierProvider(create: (_) => HomeProvider()),
         // Leave Request Provider
         ChangeNotifierProvider(create: (_) => LeaveRequestProvider()),
+
         // Call Bloc
         BlocProvider<AuthBloc>(
           create: (_) => GetIt.instance<AuthBloc>(),
@@ -36,6 +39,14 @@ void main() async {
 
         BlocProvider<HomeBloc>(
           create: (_) => GetIt.instance<HomeBloc>(),
+        ),
+
+        BlocProvider<LeaveRequestBloc>(
+          create: (_) => GetIt.instance<LeaveRequestBloc>(),
+        ),
+
+        BlocProvider<ApprovalBloc>(
+          create: (_) => GetIt.instance<ApprovalBloc>(),
         ),
       ],
       child: const MyApp(),

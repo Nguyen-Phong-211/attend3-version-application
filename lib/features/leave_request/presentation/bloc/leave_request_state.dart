@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:application/features/leave_request/domain/entities/approval_leave_request_entity.dart';
 
 class LeaveRequestState extends Equatable {
   final String? subject;
@@ -54,4 +55,44 @@ class LeaveRequestState extends Equatable {
     isSuccess,
     errorMessage,
   ];
+}
+
+class ApprovalState extends Equatable {
+  final bool isLoading;
+  final List<ApprovalLeaveRequestEntity> allRequests;
+  final List<ApprovalLeaveRequestEntity> filteredRequests;
+  final ApprovalLeaveRequestEntity? selectedRequest;
+  final Map<String, dynamic>? appliedFilters;
+  final String? error;
+
+  const ApprovalState({
+    this.isLoading = false,
+    this.allRequests = const [],
+    this.filteredRequests = const [],
+    this.selectedRequest,
+    this.appliedFilters,
+    this.error,
+  });
+
+  ApprovalState copyWith({
+    bool? isLoading,
+    List<ApprovalLeaveRequestEntity>? allRequests,
+    List<ApprovalLeaveRequestEntity>? filteredRequests,
+    ApprovalLeaveRequestEntity? selectedRequest,
+    Map<String, dynamic>? appliedFilters,
+    String? error,
+  }) {
+    return ApprovalState(
+      isLoading: isLoading ?? this.isLoading,
+      allRequests: allRequests ?? this.allRequests,
+      filteredRequests: filteredRequests ?? this.filteredRequests,
+      selectedRequest: selectedRequest ?? this.selectedRequest,
+      appliedFilters: appliedFilters ?? this.appliedFilters,
+      error: error,
+    );
+  }
+
+  @override
+  List<Object?> get props =>
+      [isLoading, allRequests, filteredRequests, selectedRequest, appliedFilters, error];
 }

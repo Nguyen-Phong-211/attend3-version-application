@@ -27,7 +27,7 @@ class InputFields {
             LengthLimitingTextInputFormatter(10),
           ],
           decoration: InputDecoration(
-            prefixIcon: const Icon(Icons.phone, color: AppColors.iconInput),
+            prefixIcon: const Icon(Icons.phone, color: AppColors.iconInput,),
             hintText: AppLabel.hintTextPhoneNumber,
             errorText: errorText,
             contentPadding:
@@ -196,6 +196,50 @@ class InputFields {
             FocusScope.of(context).previousFocus();
           }
         },
+      ),
+    );
+  }
+
+  static Widget customRadio({
+    required String label,
+    required String value,
+    required String? groupValue,
+    required ValueChanged<String> onChanged,
+    Color activeColor = Colors.blue,
+    TextStyle? labelStyle,
+  }) {
+    final bool selected = value == groupValue;
+    return GestureDetector(
+      onTap: () => onChanged(value),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: 22,
+            height: 22,
+            padding: const EdgeInsets.all(3),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: selected ? activeColor : Colors.grey.shade400,
+                width: 2,
+              ),
+            ),
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 200),
+              decoration: BoxDecoration(
+                color: selected ? activeColor : Colors.transparent,
+                shape: BoxShape.circle,
+              ),
+            ),
+          ),
+          const SizedBox(width: 8),
+          Text(
+            label,
+            style: labelStyle ??
+                const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+          ),
+        ],
       ),
     );
   }

@@ -100,4 +100,43 @@ class ScaffoldMessages {
       ),
     );
   }
+
+  // Inform success
+  static void informSuccess(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Row(
+          children: [
+            Icon(Icons.check_circle, color: Colors.green),
+            SizedBox(width: 8),
+            Text(
+              message,
+              style: TextStyle(fontSize: 11),
+            ),
+          ],
+        ),
+        behavior: SnackBarBehavior.floating,
+        duration: Duration(seconds: 4),
+      ),
+    );
+  }
+
+  static void informError(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.red[50],
+        behavior: SnackBarBehavior.floating,
+        content: Row(
+          children: [
+            FaIcon(FontAwesomeIcons.circleExclamation, color: Colors.red),
+            const SizedBox(width: 10),
+            Text(
+              message,
+              style: TextStyle(color: Colors.red[900], fontSize: 11),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }

@@ -49,7 +49,7 @@ class AppLabel {
   static const titleRegisterFace = 'Đăng ký khuôn mặt';
   static const titleLeaveRequest = 'Xin nghỉ phép';
   static const titleCreatedQRCode = 'Tạo QR Code';
-  static const titleApprovedLeave = 'Duyệt đơn nghỉ phép';
+  static const titleApprovedLeave = 'Duyệt nghỉ phép';
   static const titleScheduleTeaching = 'Lịch dạy';
   static const titleStaticForStudent = 'Thống kê';
   static const titleContactLecturer = 'Liên hệ giảng viên';
@@ -61,4 +61,46 @@ class AppLabel {
   static const titleErrorLogin = 'Đã có lỗi xảy ra';
   //
   static const titleResetPasswordSuccess = 'Mật khẩu đã được đặt lại thành công';
+  // Date field
+  static const titleDateField = 'Chúc bạn ngày mới vui vẻ và tốt lành! 😘';
+  // Tile Cancel Button
+  static const titleButtonCancel = 'CANCEL';
+  // Tile OK Button
+  static const titleButtonOK = 'OK';
+  // Title button filter
+  static const titleButtonFilter = 'Bộ lọc';
+  // Title button apply filter
+  static const titleButtonApplyFilter = 'Áp dụng';
+  // Title button reset filter
+  static const titleButtonOutlineResetFilter = 'Đặt lại';
+  // Hint text date input field
+  static const hintTextButtonDateField = 'Chọn khoảng thời gian';
+  // Title return empty data
+  static const titleReturnEmptyData = 'Không có đơn phù hợp với bộ lọc';
+  // Title scaffold leave request
+  static const titleScaffoldLeaveRequestApproved = 'Phê duyệt đơn nghỉ';
+  // Title input filter by class
+  static const titleInputFilterByClass = 'Theo lớp';
+  static const hintTextInputFilterByClass = 'Chọn lớp';
+  // Title input filter by subject
+  static const titleInputFilterBySubject = 'Theo môn học';
+  static const hintTextInputFilterBySubject = 'Chọn môn học';
+  // Title input filter by date
+  static const titleInputFilterByDate = 'Theo thời gian';
+  // Title inform send leave request success
+  static const titleInformLeaveRequestSuccess = 'Gửi đơn nghỉ phép thành công';
+  // Title scaffold leave request
+  static const titleScaffoldLeaveRequest = 'Xin nghỉ phép';
+  // Hint text input select lecturer
+  static const hintTextSelectLecturer = 'Chọn giảng viên';
+  // Hint text input start date
+  static const hintTextInputStartDate = 'Từ ngày';
+  // Hint text input end date
+  static const hintTextInputEndDate = 'Đến ngày';
+  // Hint text input reason
+  static const hintTextInputReason = 'Lý do';
+  // Title scaffold detail leave request screen
+  static const titleScaffoldDetailLeaveRequest = 'Chi tiết đơn nghỉ phép';
+  // Title inform
+  static const titleInformEnterReason = 'Vui lòng nhập lý do từ chối';
 }

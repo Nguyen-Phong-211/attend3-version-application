@@ -39,4 +39,22 @@ class AppShadows {
   );
 
   static const List<BoxShadow> inputShadowList = [inputShadow];
+
+  //
+  static const BoxShadow dropdownItemShadow = BoxShadow(
+    color: Color.fromRGBO(158, 158, 158, 0.15), // Colors.grey.withValues(alpha: 0.15),
+    blurRadius: 6,
+    offset: const Offset(0, 3),
+  );
+
+  static const List<BoxShadow> dropdownItemShadowList = [dropdownItemShadow];
+
+  // Card shadow
+  static const BoxShadow cardShadowGeneral = BoxShadow(
+      color: Color.fromRGBO(158, 158, 158, 0.15), // Colors.grey.shade200,
+      blurRadius: 6,
+      offset: const Offset(0, 2)
+  );
+
+  static const List<BoxShadow> cardShadowGeneralList = [cardShadowGeneral];
 }

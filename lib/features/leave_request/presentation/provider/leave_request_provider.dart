@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
+
+import '../../../../view/approval_leave_quest/approval_leave_quest_screen.dart';
+import '../bloc/leave_request_bloc.dart';
+import '../bloc/leave_request_event.dart';
 
 /// Provider for Leave Request screen
 /// - holds selected dates, lists (semesters/years/etc.)
@@ -88,5 +94,18 @@ class LeaveRequestProvider extends ChangeNotifier {
   void dispose() {
     reasonController.dispose();
     super.dispose();
+  }
+}
+
+class ApprovalProvider extends StatelessWidget {
+  const ApprovalProvider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<ApprovalBloc>(
+      create: (_) => GetIt.instance<ApprovalBloc>()
+        ..add(LoadApprovalListEvent()),
+      child: const ApprovalLeaveRequestScreen(),
+    );
   }
 }

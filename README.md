@@ -62,7 +62,7 @@ lib/
 │   │   ├── <b>data_sources/</b>              # Call API
 │   │   │   └── auth_remote_data_source.dart
 │   │   │
-│   │   ├── <b>domain/</b>            # Entities, usecases, repository folder (if applying clean arch)
+│   │   ├── <b>domain/</b>            # Entities, use cases, repository folder (if applying clean arch)
 │   │   │   └── ...
 │   │   │
 │   │   ├── <b>presentation/</b>      # UI + State Management (Bloc)
@@ -85,4 +85,6 @@ lib/
 │   │   │       └── ...
 │   │
 │   └── injection.dart                 # Other features follow same structure
+│
+│   ├── <b>different module/</b>       # Other module (home, leave request, etc) follow same structure 
 </pre>

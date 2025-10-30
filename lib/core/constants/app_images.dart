@@ -16,4 +16,9 @@ class AppImages {
 
   // Image icon loading
   static const imageIconLoading  = 'assets/icons/loading.gif';
+
+  // Image background for date field
+  static const imageBackgroundDateField = 'assets/images/bg-date-field.jpg';
+  // Image icon empty data
+  static const imageIconEmptyData = 'assets/icons/empty-data.png';
 }

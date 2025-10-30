@@ -9,7 +9,7 @@ import 'package:application/features/home/data/home_repository.dart';
 import 'package:application/features/home/presentation/widgets/header_section.dart';
 import 'package:application/features/home/presentation/widgets/quick_access_grid.dart';
 import 'package:application/features/home/presentation/widgets/today_schedule.dart';
-import 'package:application/view/widgets/bottom_nav_menu.dart';
+import 'package:application/features/widgets/bottom_nav_menu.dart';
 import 'package:application/routes/app_routes.dart';
 
 class HomeScreen extends StatelessWidget {
