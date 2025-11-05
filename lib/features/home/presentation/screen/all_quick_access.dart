@@ -2,26 +2,33 @@ import 'package:application/core/constants/app_colors.dart';
 import 'package:application/view/notification/notification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:application/core/theme/text_styles.dart';
-import 'package:application/view/widgets/custom_button.dart';
+import 'package:application/features/widgets/custom_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:application/core/constants/app_colors_linear_gradient_constants.dart';
 import 'package:application/core/constants/border_radius.dart';
 import 'package:application/core/constants/app_label.dart';
+
+import 'package:application/features/statistics/presentation/screen/statistic_student_screen.dart';
+import 'package:application/features/leave_request/presentation/screens/leave_screen.dart';
+import 'package:application/features/leave_request/presentation/screens/approval_leave_quest_screen.dart';
+import 'package:application/features/statistics/presentation/screen/statistic_lecturer_screen.dart';
+import 'package:application/features/schedule/presentation/screen/schedule_study_screen.dart';
+
 import 'package:application/view/attendance/attendance_by_qrcode_screen.dart';
 import 'package:application/view/profile/update_profile.dart';
-import 'package:application/features/leave_request/presentation/screens/leave_screen.dart';
 import 'package:application/view/contact_lecturer/contact_lecturer_screen.dart';
-import 'package:application/view/schedule_studying/schedule_screen.dart';
 import 'package:application/view/remind/remind_screen.dart';
-import 'package:application/view/dashboard/dashboard_screen.dart';
 import 'package:application/view/attendance/attendance_history_screen.dart';
 import 'package:application/view/general_setting/general_setting_screen.dart';
 import 'package:application/view/incident_report/incident_report_screen.dart';
 import 'package:application/view/profile/change_language_screen.dart';
 import 'package:application/view/term/term_screen.dart';
 import 'package:application/core/constants/app_images.dart';
-import 'package:application/features/leave_request/presentation/screens/approval_leave_quest_screen.dart';
 import 'package:application/view/qrcode/qrcode_screen.dart';
+
+import '../../../schedule/presentation/screen/schedule_study_screen.dart';
+
+
 // import 'package:application/core/constants/feature_permissions.dart';
 
 class AllQuickAccessScreen extends StatelessWidget {
@@ -170,7 +177,7 @@ class AllQuickAccessScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const DashboardScreen()
+                            builder: (context) => const StatisticStudentScreen()
                         ),
                       );
                     }
@@ -196,7 +203,7 @@ class AllQuickAccessScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const ScheduleScreen()
+                            builder: (context) => const ScheduleStudyScreen()
                         ),
                       );
                     },
@@ -235,7 +242,7 @@ class AllQuickAccessScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const DashboardScreen()
+                            builder: (context) => const StatisticLecturerScreen()
                         ),
                       );
                     },

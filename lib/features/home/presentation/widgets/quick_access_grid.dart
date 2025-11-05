@@ -5,15 +5,15 @@ import 'package:application/core/constants/app_label.dart';
 import 'package:application/core/constants/app_images.dart';
 import 'package:application/features/widgets/custom_button.dart';
 import 'package:application/features/home/presentation/screen/all_quick_access.dart';
-import 'package:application/view/profile/update_profile.dart';
-import 'package:application/features/leave_request/presentation/screens/leave_screen.dart';
-import 'package:application/view/contact_lecturer/contact_lecturer_screen.dart';
-import 'package:application/view/schedule_studying/schedule_screen.dart';
-import 'package:application/view/qrcode/qrcode_screen.dart';
 import 'package:application/features/leave_request/presentation/screens/approval_leave_quest_screen.dart';
-import 'package:application/view/attendance/attendance_by_qrcode_screen.dart';
+import 'package:application/features/leave_request/presentation/screens/leave_screen.dart';
+import 'package:application/features/statistics/presentation/screen/statistic_student_screen.dart';
+import 'package:application/features/schedule/presentation/screen/schedule_study_screen.dart';
 
-import '../../../../view/dashboard/dashboard_screen.dart';
+import 'package:application/view/profile/update_profile.dart';
+import 'package:application/view/contact_lecturer/contact_lecturer_screen.dart';
+import 'package:application/view/qrcode/qrcode_screen.dart';
+import 'package:application/view/attendance/attendance_by_qrcode_screen.dart';
 
 class QuickAccessGrid extends StatelessWidget {
   const QuickAccessGrid({super.key});
@@ -125,7 +125,7 @@ class QuickAccessGrid extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const DashboardScreen()
+                              builder: (context) => const StatisticStudentScreen()
                           ),
                         );
                       }),
@@ -150,7 +150,7 @@ class QuickAccessGrid extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const ScheduleScreen()
+                              builder: (context) => const ScheduleStudyScreen()
                           ),
                         );
                       }),

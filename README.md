@@ -88,3 +88,13 @@ lib/
 │
 │   ├── <b>different module/</b>       # Other module (home, leave request, etc) follow same structure 
 </pre>
+
+<pre>
+UI (lecturer_export_screen.dart)
+     ↓
+Provider (attendance_provider.dart)
+     ↓
+Repository (attendance_repository_impl.dart)
+     ↓
+Data source (attendance_local_data_source.dart)
+</pre>

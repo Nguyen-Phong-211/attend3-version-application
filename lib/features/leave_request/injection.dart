@@ -22,7 +22,7 @@ void initLeaveRequestModule() {
     );
   }
 
-  // Usecase
+  // Use case
   if (!sl.isRegistered<SubmitLeaveRequest>()) {
     sl.registerLazySingleton<SubmitLeaveRequest>(
           () => SubmitLeaveRequest(sl<LeaveRequestRepository>()),

@@ -99,9 +99,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
             case 1:
               Navigator.pushNamed(context, AppRoutes.schedule);
               break;
-            case 2:
-              Navigator.pushNamed(context, AppRoutes.dashboard);
-              break;
             case 3:
               Navigator.pushNamed(context, AppRoutes.notification);
               break;

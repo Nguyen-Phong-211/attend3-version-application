@@ -76,7 +76,7 @@ class AppLabel {
   // Hint text date input field
   static const hintTextButtonDateField = 'Chọn khoảng thời gian';
   // Title return empty data
-  static const titleReturnEmptyData = 'Không có đơn phù hợp với bộ lọc';
+  static const titleReturnEmptyData = 'Không có dữ liệu phù hợp với bộ lọc';
   // Title scaffold leave request
   static const titleScaffoldLeaveRequestApproved = 'Phê duyệt đơn nghỉ';
   // Title input filter by class
@@ -103,4 +103,10 @@ class AppLabel {
   static const titleScaffoldDetailLeaveRequest = 'Chi tiết đơn nghỉ phép';
   // Title inform
   static const titleInformEnterReason = 'Vui lòng nhập lý do từ chối';
+  // Title scaffold statistic
+  static const titleScaffoldStatistic = 'Thống kê điểm danh';
+  // Title chart statistic by student
+  static const titleBarChart = 'Thống kê số ngày nghỉ theo môn học trong học kì hiện tại';
+  // Title table statistic by student
+  static const titleTableDataStatistic = 'Số ngày nghỉ còn lại theo môn học trong học kì hiện tại';
 }

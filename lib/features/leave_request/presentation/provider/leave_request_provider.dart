@@ -72,7 +72,7 @@ class LeaveRequestProvider extends ChangeNotifier {
   Future<bool> submitLeave(BuildContext context) async {
     final error = validateBeforeSubmit();
     if (error != null) {
-      // you can show snackbar here or bubble error up to UI
+      // you can show snack bar here or bubble error up to UI
       // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error)));
       return false;
     }
