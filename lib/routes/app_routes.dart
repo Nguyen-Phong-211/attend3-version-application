@@ -13,8 +13,12 @@ class AppRoutes {
   static const String detailLeaveRequest = '/detailLeaveRequest';
   // statistic module
   static const String statisticStudent = '/statisticStudent';
+  // schedule module
+  static const String schedule = '/scheduleStudying';
+  static const String scheduleTeaching = '/scheduleTeaching';
+  // setting module
+  static const String setting = '/setting';
 
-  static const String schedule = '/schedule_studying';
   static const String notification = '/notification';
   static const String profile = '/profile';
   static const String contactLecturer = '/contactLecturer';

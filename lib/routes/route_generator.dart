@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'app_routes.dart';
 // auth module
 import 'package:application/features/auth/presentation/screens/login_screen.dart';
 import 'package:application/features/auth/presentation/screens/forgot_password_screen.dart';
@@ -15,18 +16,11 @@ import 'package:application/features/leave_request/domain/entities/approval_leav
 // statistic module
 import 'package:application/features/statistics/presentation/screen/statistic_student_screen.dart';
 
-
-import 'package:application/view/schedule_studying/schedule_screen.dart';
-import 'package:application/view/notification/notification_screen.dart';
-import 'package:application/view/profile/profile_screen.dart';
-import 'package:application/view/contact_lecturer/contact_lecturer_screen.dart';
-import 'package:application/view/remind/remind_screen.dart';
-import 'package:application/view/attendance/attendance_history_screen.dart';
-import 'package:application/view/attendance/attendance_by_qrcode_screen.dart';
-import 'package:application/view/general_setting/general_setting_screen.dart';
-import 'package:application/view/term/term_screen.dart';
-import 'package:application/view/feedback/feedback_screen.dart';
-import 'app_routes.dart';
+// schedule module
+import 'package:application/features/schedule/presentation/screen/schedule_study_screen.dart';
+import 'package:application/features/schedule/presentation/screen/schedule_teaching_screen.dart';
+// setting module
+import 'package:application/features/setting/presentation/screen/settings_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -58,30 +52,16 @@ class RouteGenerator {
       // statistic module
       case AppRoutes.statisticStudent:
         return MaterialPageRoute(builder: (_) => const StatisticStudentScreen());
-
-
+      // schedule module
       case AppRoutes.schedule:
-        return MaterialPageRoute(builder: (_) => const ScheduleScreen());
-      case AppRoutes.notification:
-        return MaterialPageRoute(builder: (_) => const NotificationScreen());
-      case AppRoutes.profile:
-        return MaterialPageRoute(builder: (_) => const ProfileScreen());
-      case AppRoutes.contactLecturer:
-        return MaterialPageRoute(builder: (_) => const ContactLecturerScreen());
-      case AppRoutes.remind:
-        return MaterialPageRoute(builder: (_) => const RemindScreen());
-
-
-      case AppRoutes.attendanceHistory:
-        return MaterialPageRoute(builder: (_) => const AttendanceHistoryScreen());
-      case AppRoutes.scanCode:
-        return MaterialPageRoute(builder: (_) => const AttendanceByQrcodeScreen());
-      case AppRoutes.generalSetting:
+        return MaterialPageRoute(builder: (_) => const ScheduleStudyScreen());
+      case AppRoutes.scheduleTeaching:
+        return MaterialPageRoute(builder: (_) => const ScheduleTeachingScreen());
+      // setting module
+      case AppRoutes.setting:
         return MaterialPageRoute(builder: (_) => const SettingsScreen());
-      case AppRoutes.term:
-        return MaterialPageRoute(builder: (_) => const TermScreen());
-      case AppRoutes.feedback:
-        return MaterialPageRoute(builder: (_) => const FeedbackScreen());
+
+
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(

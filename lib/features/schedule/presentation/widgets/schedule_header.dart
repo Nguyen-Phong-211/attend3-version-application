@@ -6,7 +6,8 @@ import 'package:application/core/constants/app_colors.dart';
 import 'package:application/core/constants/border_radius.dart';
 
 class ScheduleHeader extends StatelessWidget {
-  const ScheduleHeader({super.key});
+  final String title;
+  const ScheduleHeader({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class ScheduleHeader extends StatelessWidget {
               onTap: () => Navigator.pop(context),
               child: const FaIcon(FontAwesomeIcons.chevronLeft, color: AppColors.white)),
           const SizedBox(width: 12),
-          Text('Lịch học', style: TextStyles.titleScaffold,),
+          Text(title, style: TextStyles.titleScaffold,),
         ],
       ),
     );

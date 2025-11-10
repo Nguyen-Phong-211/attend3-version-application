@@ -56,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                 } else if (index == 3) {
                   Navigator.pushNamed(context, AppRoutes.notification);
                 } else if (index == 4) {
-                  Navigator.pushNamed(context, AppRoutes.profile);
+                  Navigator.pushNamed(context, AppRoutes.setting);
                 }
               },
             ),

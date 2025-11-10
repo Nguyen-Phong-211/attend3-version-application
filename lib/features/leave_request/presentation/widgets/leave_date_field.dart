@@ -74,7 +74,7 @@ class LeaveDateField extends StatelessWidget {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          DateFormat('EEE, MMM dd', 'en_US').format(tempDate),
+                          DateFormat('EEE, MMM dd', 'vi_VN').format(tempDate),
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 28,

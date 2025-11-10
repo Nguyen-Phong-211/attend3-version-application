@@ -6,14 +6,14 @@ import 'package:application/core/constants/border_radius.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:application/core/constants/box_shadow_constants.dart';
 
-class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({super.key});
+class SettingsScreen1 extends StatefulWidget {
+  const SettingsScreen1({super.key});
 
   @override
-  State<SettingsScreen> createState() => _SettingsScreenState();
+  State<SettingsScreen1> createState() => _SettingsScreenState();
 }
 
-class _SettingsScreenState extends State<SettingsScreen> {
+class _SettingsScreenState extends State<SettingsScreen1> {
   bool isDarkMode = false;
   bool pushNotifications = true;
   String selectedLanguage = 'vi';

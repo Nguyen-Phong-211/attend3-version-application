@@ -6,6 +6,15 @@ import 'package:application/features/schedule/presentation/widgets/schedule_head
 import 'package:application/features/schedule/presentation/widgets/schedule_view_switcher.dart';
 import 'package:application/features/schedule/presentation/widgets/schedule_date_selector.dart';
 import 'package:application/features/schedule/presentation/widgets/schedule_card.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:application/features/schedule/presentation/bloc/schedule_bloc.dart';
+import 'package:application/features/schedule/presentation/bloc/schedule_event.dart';
+import 'package:application/features/schedule/presentation/bloc/schedule_state.dart';
+import 'package:application/core/constants/app_images.dart';
+import 'package:application/core/constants/app_label.dart';
+import 'package:application/core/theme/text_styles.dart';
+import 'package:application/features/widgets/loading_overlay.dart';
+import 'package:application/features/schedule/domain/entities/view_mode.dart';
 
 class ScheduleStudyScreen extends StatefulWidget {
   const ScheduleStudyScreen({super.key});
@@ -13,8 +22,6 @@ class ScheduleStudyScreen extends StatefulWidget {
   @override
   State<ScheduleStudyScreen> createState() => _ScheduleStudyScreenState();
 }
-
-enum ViewMode { week, month }
 
 class _ScheduleStudyScreenState extends State<ScheduleStudyScreen> {
   ViewMode _viewMode = ViewMode.week;
@@ -32,70 +39,129 @@ class _ScheduleStudyScreenState extends State<ScheduleStudyScreen> {
     return firstDay.add(Duration(days: index));
   });
 
-  final Map<String, List<Map<String, String>>> scheduleData = {
-    '30/07': [
-      {'time': '09:00 - 17:30', 'title': 'Toán cao cấp 1', 'host': 'Lê Văn Phong', 'location': 'A01'},
-    ],
-    '27/07': [
-      {'time': '09:00 - 11:30', 'title': 'Toán cao cấp 2', 'host': 'Nguyễn Văn Minh', 'location': 'A03'},
-    ],
-  };
-
   @override
   void initState() {
     super.initState();
     final today = DateTime.now();
     final monday = today.subtract(Duration(days: today.weekday - 1));
-    selectedDayIndex = today.difference(monday).inDays;
+    selectedDayIndex = today
+        .difference(monday)
+        .inDays;
+
+    // Trigger load schedules
+    context.read<ScheduleBloc>().add(const FetchScheduleEvent());
   }
 
   @override
   Widget build(BuildContext context) {
     final selectedDates = _viewMode == ViewMode.week ? weekDates : monthDates;
     final selectedDate = selectedDates[selectedDayIndex];
-    final formattedDate = '${selectedDate.day.toString().padLeft(2, '0')}/${selectedDate.month.toString().padLeft(2, '0')}';
-    final daySchedules = scheduleData[formattedDate] ?? [];
+    final formattedDate =
+        '${selectedDate.day.toString().padLeft(2, '0')}/${selectedDate.month
+        .toString().padLeft(2, '0')}';
 
-    return Scaffold(
-      backgroundColor: AppColors.white,
-      body: Column(
-        children: [
-          const ScheduleHeader(),
-          ScheduleViewSwitcher(
-            viewMode: _viewMode,
-            onChanged: (mode) {
-              setState(() {
-                _viewMode = mode;
-                selectedDayIndex = 0;
-              });
-            },
-          ),
-          ScheduleDateSelector(
-            dates: selectedDates,
-            selectedIndex: selectedDayIndex,
-            onDateSelected: (index) => setState(() => selectedDayIndex = index),
-          ),
-          const Divider(height: 1),
-          Expanded(
-            child: daySchedules.isEmpty
-                ? const Center(child: Text('Không có lịch học nào cho ngày này'))
-                : ListView.builder(
-              itemCount: daySchedules.length,
-              padding: const EdgeInsets.all(16),
-              itemBuilder: (context, index) => ScheduleCard(item: daySchedules[index]),
+    return BlocBuilder<ScheduleBloc, ScheduleState>(
+      builder: (context, state) {
+        final isLoading = state is ScheduleLoading;
+
+        return LoadingOverlay(
+          isLoading: isLoading,
+          child: Scaffold(
+            backgroundColor: AppColors.white,
+            body: Column(
+              children: [
+                const ScheduleHeader(title: AppLabel.titleScaffoldSchedule,),
+                ScheduleViewSwitcher(
+                  viewMode: _viewMode,
+                  onChanged: (mode) {
+                    setState(() {
+                      _viewMode = mode;
+                      selectedDayIndex = 0;
+                    });
+                  },
+                ),
+                ScheduleDateSelector(
+                  dates: selectedDates,
+                  selectedIndex: selectedDayIndex,
+                  onDateSelected: (index) =>
+                      setState(() => selectedDayIndex = index),
+                ),
+                const Divider(height: 1),
+                Expanded(
+                  child: _buildScheduleList(state, formattedDate),
+                ),
+              ],
+            ),
+            bottomNavigationBar: CustomBottomNavBar(
+              currentIndex: 1,
+              onTap: (index) {
+                if (index == 0)
+                  Navigator.pushNamed(context, AppRoutes.home);
+                else if (index == 1)
+                  Navigator.pushNamed(context, AppRoutes.schedule);
+                else if (index == 3)
+                  Navigator.pushNamed(context, AppRoutes.notification);
+                else
+                if (index == 4) Navigator.pushNamed(context, AppRoutes.setting);
+              },
             ),
           ),
-        ],
-      ),
-      bottomNavigationBar: CustomBottomNavBar(
-        currentIndex: 1,
-        onTap: (index) {
-          if (index == 0) Navigator.pushNamed(context, AppRoutes.home);
-          else if (index == 1) Navigator.pushNamed(context, AppRoutes.schedule);
-          else if (index == 3) Navigator.pushNamed(context, AppRoutes.notification);
-          else if (index == 4) Navigator.pushNamed(context, AppRoutes.profile);
-        },
-      ),
+        );
+      },
     );
+  }
+
+  /// The split function processes the calendar list by state.
+  Widget _buildScheduleList(ScheduleState state, String formattedDate) {
+    if (state is ScheduleLoaded) {
+      final daySchedules = state.schedules
+          .where((s) =>
+      '${s.date.substring(8, 10)}/${s.date.substring(5, 7)}' ==
+          formattedDate)
+          .toList();
+
+      if (daySchedules.isEmpty) {
+        return Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset(
+                AppImages.imageIconEmptyData,
+                width: 60,
+                height: 60,
+                color: Colors.grey.shade400,
+              ),
+              const SizedBox(height: 12),
+              Text(
+                AppLabel.titleReturnEmptyData,
+                style: TextStyles.titleSmall.copyWith(
+                  color: Colors.grey.shade400,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        );
+      }
+
+      return ListView.builder(
+        itemCount: daySchedules.length,
+        padding: const EdgeInsets.all(16),
+        itemBuilder: (context, index) =>
+            ScheduleCard(item: daySchedules[index]),
+      );
+    } else if (state is ScheduleError) {
+      return Center(
+        child: Text(
+          state.message,
+          style: TextStyles.bodyNormal.copyWith(color: Colors.red),
+          textAlign: TextAlign.center,
+        ),
+      );
+    } else if (state is ScheduleLoading) {
+      return const SizedBox.shrink(); /// Loading has been displayed by overlay
+    } else {
+      return const SizedBox.shrink();
+    }
   }
 }

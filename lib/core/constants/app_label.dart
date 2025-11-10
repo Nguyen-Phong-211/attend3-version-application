@@ -109,4 +109,20 @@ class AppLabel {
   static const titleBarChart = 'Thống kê số ngày nghỉ theo môn học trong học kì hiện tại';
   // Title table statistic by student
   static const titleTableDataStatistic = 'Số ngày nghỉ còn lại theo môn học trong học kì hiện tại';
+  // Title TAB 1 Dashboard
+  static const titleTabDashboard = 'Dashboard';
+  // Title TAB 2 Export attendance file
+  static const titleTabExportFile = 'Xuất file điểm danh';
+  // Title scaffold schedule
+  static const titleScaffoldSchedule = 'Lịch học';
+  // Title scaffold setting
+  static const titleScaffoldSetting = 'Hồ sơ của tôi';
+  // Title scaffold change language
+  static const titleScaffoldChangeLanguage = 'Chuyển đổi ngôn ngữ';
+  // Title scaffold update profile
+  static const titleScaffoldUpdateProfile = 'Cập nhật hồ sơ';
+  // Title inform update success
+  static const titleInformUpdateSuccess = 'Thông tin đã được cập nhật';
+  // Title scaffold login history
+  static const titleScaffoldLoginHistory = 'Lịch sử đăng nhập';
 }

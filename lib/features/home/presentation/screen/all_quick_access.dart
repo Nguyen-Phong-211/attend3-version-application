@@ -13,21 +13,19 @@ import 'package:application/features/leave_request/presentation/screens/leave_sc
 import 'package:application/features/leave_request/presentation/screens/approval_leave_quest_screen.dart';
 import 'package:application/features/statistics/presentation/screen/statistic_lecturer_screen.dart';
 import 'package:application/features/schedule/presentation/screen/schedule_study_screen.dart';
+import 'package:application/features/schedule/presentation/screen/schedule_teaching_screen.dart';
+import 'package:application/features/setting/presentation/screen/settings_screen.dart';
 
 import 'package:application/view/attendance/attendance_by_qrcode_screen.dart';
 import 'package:application/view/profile/update_profile.dart';
 import 'package:application/view/contact_lecturer/contact_lecturer_screen.dart';
 import 'package:application/view/remind/remind_screen.dart';
 import 'package:application/view/attendance/attendance_history_screen.dart';
-import 'package:application/view/general_setting/general_setting_screen.dart';
 import 'package:application/view/incident_report/incident_report_screen.dart';
 import 'package:application/view/profile/change_language_screen.dart';
 import 'package:application/view/term/term_screen.dart';
 import 'package:application/core/constants/app_images.dart';
 import 'package:application/view/qrcode/qrcode_screen.dart';
-
-import '../../../schedule/presentation/screen/schedule_study_screen.dart';
-
 
 // import 'package:application/core/constants/feature_permissions.dart';
 
@@ -166,7 +164,12 @@ class AllQuickAccessScreen extends StatelessWidget {
                     iconPath: AppImages.imageIconScheduleTeaching,
                     backgroundColor: AppColors.backgroundButtonScheduleTeaching,
                     onTap: () {
-
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ScheduleTeachingScreen()
+                        ),
+                      );
                     }
                   ),
                   CustomButton(

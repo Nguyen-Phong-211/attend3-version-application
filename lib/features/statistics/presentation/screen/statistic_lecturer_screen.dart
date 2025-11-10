@@ -8,6 +8,7 @@ import 'package:application/features/statistics/presentation/widgets/statistic_s
 import 'package:heroicons/heroicons.dart';
 import 'package:application/features/statistics/presentation/widgets/lecturer_export_tab.dart';
 import 'package:application/features/statistics/presentation/widgets/lecturer_dashboard_tab.dart';
+import 'package:application/core/constants/app_label.dart';
 
 class StatisticLecturerScreen extends StatefulWidget {
   const StatisticLecturerScreen({super.key});
@@ -44,12 +45,12 @@ class _StatisticLecturerScreenState extends State<StatisticLecturerScreen> {
                 unselectedLabelColor: Colors.grey,
                 tabs: [
                   Tab(
-                    icon: HeroIcon(HeroIcons.chartBar, size: 17,),
-                    child: Text("Dashboard", style: TextStyles.titleMedium),
+                    icon: const HeroIcon(HeroIcons.chartBar, size: 17,),
+                    child: const Text(AppLabel.titleTabDashboard, style: TextStyles.titleMedium),
                   ),
                   Tab(
-                    icon: HeroIcon(HeroIcons.arrowDownTray, size: 17),
-                    child: Text("Xuất file điểm danh", style: TextStyles.titleMedium),
+                    icon: const HeroIcon(HeroIcons.arrowDownTray, size: 17),
+                    child: const Text(AppLabel.titleTabExportFile, style: TextStyles.titleMedium),
                   ),
                 ],
               ),

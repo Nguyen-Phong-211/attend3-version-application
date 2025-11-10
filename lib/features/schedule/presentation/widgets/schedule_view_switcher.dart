@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:application/core/constants/app_colors.dart';
-import 'package:application/features/schedule/presentation/screen/schedule_study_screen.dart';
 import 'package:application/core/theme/text_styles.dart';
+import 'package:application/features/schedule/domain/entities/view_mode.dart';
 
 class ScheduleViewSwitcher extends StatelessWidget {
   final ViewMode viewMode;

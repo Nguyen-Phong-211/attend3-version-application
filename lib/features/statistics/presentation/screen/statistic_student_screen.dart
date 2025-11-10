@@ -58,7 +58,7 @@ class _StatisticStudentScreenState extends State<StatisticStudentScreen> {
                       const SizedBox(height: 24),
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16),
-                        child: Text(
+                        child: const Text(
                           AppLabel.titleBarChart,
                           style: TextStyles.titleMedium,
                         ),
@@ -68,7 +68,7 @@ class _StatisticStudentScreenState extends State<StatisticStudentScreen> {
                       const SizedBox(height: 24),
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16),
-                        child: Text(
+                        child: const Text(
                           AppLabel.titleTableDataStatistic,
                           style: TextStyles.titleMedium,
                         ),

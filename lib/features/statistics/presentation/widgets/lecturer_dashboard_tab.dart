@@ -34,7 +34,7 @@ class LecturerDashboardTab extends StatelessWidget {
 
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: Text(
+            child: const Text(
               "Thống kê theo lớp và môn học",
               style: TextStyles.titleSmall,
             ),
@@ -72,7 +72,7 @@ class LecturerDashboardTab extends StatelessWidget {
           else ...[
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Text(
+              child: const Text(
                 "Thống kê điểm danh sinh viên",
                 style: TextStyles.titleSmall,
               ),
