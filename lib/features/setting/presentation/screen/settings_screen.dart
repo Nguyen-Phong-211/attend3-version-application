@@ -11,15 +11,20 @@ import 'package:application/features/setting/presentation/widgets/settings_switc
 import 'package:application/features/setting/presentation/bloc/settings_bloc.dart';
 import 'package:application/features/setting/presentation/bloc/settings_event.dart';
 import 'package:application/features/setting/presentation/bloc/settings_state.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:get_it/get_it.dart';
-
+import 'package:application/features/widgets/scaffold_messages.dart';
+import 'package:provider/provider.dart';
+import 'package:application/features/setting/presentation/provider/setting_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:application/core/theme/text_styles.dart';
 import 'update_profile_screen.dart';
 import 'change_password_screen.dart';
 import 'change_language_screen.dart';
 import 'history_login_screen.dart';
-import 'package:application/view/term/term_screen.dart';
-import 'package:application/view/feedback/feedback_screen.dart';
-import 'package:application/view/incident_report/incident_report_screen.dart';
+import 'term_screen.dart';
+import 'feedback_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -27,6 +32,8 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sl = GetIt.instance;
+    final settingProvider = Provider.of<SettingProvider>(context);
+
     return BlocProvider(
       create: (_) => SettingBloc(
         getSettingsUseCase: sl(),
@@ -124,17 +131,30 @@ class SettingsScreen extends StatelessWidget {
                               icon: Icons.warning_amber,
                               title: 'Báo cáo sự cố',
                               color: Colors.red.shade300,
-                              onTap: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => const IncidentReportScreen(),
-                                ),
-                              ),
+                              onTap: () async {
+                                final url = Uri.parse('https://forms.gle/UU6gGGjVkYbBq1Pg7');
+                                if (await canLaunchUrl(url)) {
+                                  await launchUrl(url, mode: LaunchMode.externalApplication);
+                                } else {
+                                  ScaffoldMessages.informError(context, 'Không thể mở liên kết báo cáo sự cố');
+                                }
+                              },
                             ),
                             SettingsTile(
                               icon: Icons.description,
                               title: 'Điều khoản & Chính sách',
                               color: Colors.brown,
+                              onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const TermScreen(),
+                                ),
+                              ),
+                            ),
+                            SettingsTile(
+                              icon: Icons.auto_stories_rounded,
+                              title: 'Hướng dẫn sử dụng',
+                              color: Colors.purple,
                               onTap: () => Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -154,9 +174,8 @@ class SettingsScreen extends StatelessWidget {
                               icon: Icons.dark_mode,
                               title: 'Chế độ tối',
                               subtitle: 'Bật giao diện nền tối',
-                              value: state.isDarkMode,
-                              onChanged: (v) =>
-                                  bloc.add(ToggleDarkModeEvent(v)),
+                              value: settingProvider.isDarkMode,
+                              onChanged: (v) => settingProvider.toggleDarkMode(v),
                             ),
                             SettingsSwitchTile(
                               icon: Icons.notifications_active_outlined,
@@ -165,6 +184,33 @@ class SettingsScreen extends StatelessWidget {
                               value: state.pushNotifications,
                               onChanged: (v) =>
                                   bloc.add(TogglePushNotificationEvent(v)),
+                            ),
+                            SettingsTile(
+                              icon: Icons.cleaning_services_outlined,
+                              title: 'Xoá bộ nhớ đệm',
+                              color: Colors.orange,
+                              onTap: () async {
+                                final prefs = await SharedPreferences.getInstance();
+                                await prefs.clear();
+                                await DefaultCacheManager().emptyCache();
+
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Row(
+                                      children: [
+                                        Icon(Icons.check_circle, color: Colors.green),
+                                        SizedBox(width: 8),
+                                        Text(
+                                          'Đã xóa bộ nhớ đệm thành công',
+                                          style: TextStyle(fontSize: 11),
+                                        ),
+                                      ],
+                                    ),
+                                    behavior: SnackBarBehavior.floating,
+                                    duration: Duration(seconds: 4),
+                                  ),
+                                );
+                              },
                             ),
                             SettingsTile(
                               icon: Icons.logout,
@@ -213,15 +259,29 @@ class SettingsScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text('Xác nhận'),
-        content: const Text('Bạn có chắc chắn muốn đăng xuất?'),
+        title: Text(
+          'Xác nhận',
+          style: TextStyles.titleHeadingMedium.copyWith(color: Colors.black),
+        ),
+        content: const Text(
+          'Bạn có chắc chắn muốn đăng xuất?',
+          style: TextStyles.bodyNormal,
+        ),
         actions: [
-          TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('Hủy')),
-          TextButton(
-            onPressed: () =>
-                Navigator.pushReplacementNamed(context, '/login'),
+          OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              foregroundColor: Colors.red,
+              side: const BorderSide(color: Colors.red),
+            ),
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Hủy'),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.red,
+              foregroundColor: Colors.white,
+            ),
+            onPressed: () => Navigator.pushReplacementNamed(context, '/login'),
             child: const Text('Đăng xuất'),
           ),
         ],

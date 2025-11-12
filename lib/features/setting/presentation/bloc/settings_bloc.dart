@@ -18,21 +18,24 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
   }
 
   void _onLoad(LoadSettingEvent event, Emitter<SettingState> emit) async {
-    final settings = await getSettingsUseCase();
-    emit(SettingLoaded(
-      isDarkMode: settings.isDarkMode,
-      pushNotifications: settings.pushNotifications,
-      userInfo: const {'name': 'Lê Văn Phong', 'email': 'phong.le@example.com'},
-    ));
+    try {
+      final settings = await getSettingsUseCase();
+      emit(SettingLoaded(
+        isDarkMode: settings.isDarkMode,
+        pushNotifications: settings.pushNotifications,
+        userInfo: const {'name': 'Lê Văn Phong', 'email': 'phong.le@example.com'},
+      ));
+    } catch (e) {
+      emit(SettingError(message: 'Không thể tải cài đặt: $e'));
+    }
   }
 
-  void _onToggleDarkMode(ToggleDarkModeEvent event, Emitter<SettingState> emit) {
+  void _onToggleDarkMode(ToggleDarkModeEvent event, Emitter<SettingState> emit) async {
     if (state is SettingLoaded) {
       final current = state as SettingLoaded;
-      emit(current.copyWith(isDarkMode: event.value));
-      updateSettingsUseCase(
-        current.copyWith(isDarkMode: event.value).toEntity(),
-      );
+      final updated = current.copyWith(isDarkMode: event.value);
+      emit(updated);
+      await updateSettingsUseCase(updated.toEntity());
     }
   }
 

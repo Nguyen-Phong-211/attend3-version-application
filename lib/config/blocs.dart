@@ -1,4 +1,5 @@
 import 'package:application/features/setting/presentation/bloc/login_history_bloc.dart';
+import 'package:application/features/setting/presentation/bloc/settings_event.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -25,7 +26,7 @@ class AppBlocs extends StatelessWidget {
         BlocProvider(create: (_) => GetIt.instance<ApprovalBloc>()),
         BlocProvider(create: (_) => GetIt.instance<ScheduleBloc>()),
         BlocProvider(create: (_) => GetIt.instance<ScheduleTeachingBloc>()),
-        BlocProvider(create: (_) => GetIt.instance<SettingBloc>()),
+        BlocProvider(create: (_) => GetIt.instance<SettingBloc>()..add(LoadSettingEvent())),
         BlocProvider(create: (_) => GetIt.instance<LoginHistoryBloc>()),
       ],
       child: child,

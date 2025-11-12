@@ -4,9 +4,10 @@ import 'package:application/core/constants/app_colors_linear_gradient_constants.
 import 'package:application/core/constants/border_radius.dart';
 import 'package:application/core/theme/text_styles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:application/features/widgets/scaffold_messages.dart';
-import 'package:application/core/constants/app_label.dart';
 import 'package:heroicons/heroicons.dart';
+import 'package:provider/provider.dart';
+import 'package:application/features/setting/presentation/provider/setting_provider.dart';
+import 'package:application/l10n/app_localizations.dart';
 
 class LanguageSwitchScreen extends StatefulWidget {
   const LanguageSwitchScreen({super.key});
@@ -16,22 +17,15 @@ class LanguageSwitchScreen extends StatefulWidget {
 }
 
 class _LanguageSwitchScreenState extends State<LanguageSwitchScreen> {
-  String _selectedLanguage = 'vi';
 
   final Map<String, String> _languages = {
     'vi': 'Tiếng Việt 🇻🇳',
     'en': 'English 🇬🇧',
   };
 
-  void _changeLanguage(String code) {
-    setState(() {
-      _selectedLanguage = code;
-    });
-    ScaffoldMessages.informSuccess(context, 'Đã chuyển sang ${_languages[code]}');
-  }
-
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: AppColors.white,
       body: Column(
@@ -51,7 +45,7 @@ class _LanguageSwitchScreenState extends State<LanguageSwitchScreen> {
                   child: const FaIcon(FontAwesomeIcons.chevronLeft, color: AppColors.white),
                 ),
                 const SizedBox(width: 12),
-                const Text(AppLabel.titleScaffoldChangeLanguage, style: TextStyles.titleScaffold),
+                Text(l10n.languageSwitch, style: TextStyles.titleScaffold),
               ],
             ),
           ),
@@ -68,39 +62,45 @@ class _LanguageSwitchScreenState extends State<LanguageSwitchScreen> {
                 String code = _languages.keys.elementAt(index);
                 String name = _languages[code]!;
 
-                return Container(
-                  height: 47,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: AppBorderRadius.radius12,
-                    border: Border.all(
-                      color: _selectedLanguage == code ? AppColors.primary : Colors.grey.shade300,
-                      width: 2,
-                    ),
-                  ),
-                  child: InkWell(
-                    borderRadius: AppBorderRadius.radius12,
-                    onTap: () => _changeLanguage(code),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Row(
+                return Consumer<SettingProvider>(
+                  builder: (context, provider, child) {
+                    bool isSelected = provider.language == code;
+
+                    return Container(
+                      height: 47,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: AppBorderRadius.radius12,
+                        border: Border.all(
+                          color: isSelected ? AppColors.primary : Colors.grey.shade300,
+                          width: 2,
+                        ),
+                      ),
+                      child: InkWell(
+                        borderRadius: AppBorderRadius.radius12,
+                        onTap: () => provider.changeLanguage(code),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            const SizedBox(width: 16),
-                            const HeroIcon(HeroIcons.globeAlt, color: AppColors.primary, size: 15,),
-                            const SizedBox(width: 12),
-                            Text(name, style: TextStyles.titleMedium),
+                            Row(
+                              children: [
+                                const SizedBox(width: 16),
+                                const HeroIcon(HeroIcons.globeAlt, color: AppColors.primary, size: 15),
+                                const SizedBox(width: 12),
+                                Text(name, style: TextStyles.titleMedium),
+                              ],
+                            ),
+                            if (isSelected)
+                              const Padding(
+                                padding: EdgeInsets.only(right: 16),
+                                child: Icon(Icons.check_circle, color: AppColors.primary),
+                              ),
                           ],
                         ),
-                        if (_selectedLanguage == code)
-                          const Padding(
-                            padding: EdgeInsets.only(right: 16),
-                            child: Icon(Icons.check_circle, color: AppColors.primary),
-                          ),
-                      ],
-                    ),
-                  ),
+                      ),
+                    );
+                  },
                 );
               },
             ),

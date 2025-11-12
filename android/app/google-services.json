@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "515952147785",
+    "project_id": "my-app-attend3d-notifica-3d701",
+    "storage_bucket": "my-app-attend3d-notifica-3d701.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515952147785:android:b1bf84148b6b650e00ae98",
+        "android_client_info": {
+          "package_name": "com.example.application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5Z-q_pzRswtXJMCN4SG40-RzfN1wv99U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

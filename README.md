@@ -98,3 +98,5 @@ Repository (attendance_repository_impl.dart)
      ↓
 Data source (attendance_local_data_source.dart)
 </pre>
+
+brew install firebase-cli

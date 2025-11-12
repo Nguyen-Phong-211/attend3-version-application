@@ -21,6 +21,8 @@ import 'package:application/features/schedule/presentation/screen/schedule_study
 import 'package:application/features/schedule/presentation/screen/schedule_teaching_screen.dart';
 // setting module
 import 'package:application/features/setting/presentation/screen/settings_screen.dart';
+// notification module
+import 'package:application/features/notification/presentation/screen/notification_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -60,7 +62,9 @@ class RouteGenerator {
       // setting module
       case AppRoutes.setting:
         return MaterialPageRoute(builder: (_) => const SettingsScreen());
-
+      // notification module
+      case AppRoutes.notification:
+        return MaterialPageRoute(builder: (_) => const NotificationScreen());
 
       default:
         return MaterialPageRoute(

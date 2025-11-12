@@ -36,3 +36,8 @@ class SettingLoaded extends SettingState {
     );
   }
 }
+
+class SettingError extends SettingState {
+  final String message;
+  SettingError({required this.message});
+}

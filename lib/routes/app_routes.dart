@@ -19,7 +19,9 @@ class AppRoutes {
   // setting module
   static const String setting = '/setting';
 
+  // notification module
   static const String notification = '/notification';
+
   static const String profile = '/profile';
   static const String contactLecturer = '/contactLecturer';
   static const String remind = '/remind';

@@ -12,8 +12,17 @@ class SettingProvider extends ChangeNotifier {
     required this.updateSettingsUseCase,
   });
 
-  bool isDarkMode = false;
-  bool pushNotifications = true;
+  bool _isDarkMode = false;
+  bool get isDarkMode => _isDarkMode;
+
+  bool _pushNotifications = true;
+  bool get pushNotifications => _pushNotifications;
+
+  String _language = 'vi';
+  String get language => _language;
+
+  bool get isVietnamese => _language == 'vi';
+
   Map<String, String> userInfo = const {'name': 'Lê Văn Phong', 'email': 'phong.le@example.com'};
   bool isLoading = true;
 
@@ -21,37 +30,61 @@ class SettingProvider extends ChangeNotifier {
     isLoading = true;
     notifyListeners();
 
-    final settings = await getSettingsUseCase();
-    isDarkMode = settings.isDarkMode;
-    pushNotifications = settings.pushNotifications;
-
-    isLoading = false;
-    notifyListeners();
+    try {
+      final settings = await getSettingsUseCase();
+      _isDarkMode = settings.isDarkMode;
+      _pushNotifications = settings.pushNotifications;
+      _language = settings.language;
+    } catch (e) {
+      debugPrint('Failed to load settings: $e');
+    } finally {
+      isLoading = false;
+      notifyListeners();
+    }
   }
 
   Future<void> toggleDarkMode(bool value) async {
-    isDarkMode = value;
+    _isDarkMode = value;
     notifyListeners();
 
-    final entity = SettingsEntity(
-      isDarkMode: isDarkMode,
-      pushNotifications: pushNotifications,
-      language: 'vi',
-    );
-
-    await updateSettingsUseCase(entity);
+    try {
+      await updateSettingsUseCase(SettingsEntity(
+        isDarkMode: _isDarkMode,
+        pushNotifications: _pushNotifications,
+        language: _language,
+      ));
+    } catch (e) {
+      debugPrint('Failed to update dark mode: $e');
+    }
   }
 
   Future<void> togglePushNotifications(bool value) async {
-    pushNotifications = value;
+    _pushNotifications = value;
     notifyListeners();
 
-    final entity = SettingsEntity(
-      isDarkMode: isDarkMode,
-      pushNotifications: pushNotifications,
-      language: 'vi',
-    );
+    try {
+      await updateSettingsUseCase(SettingsEntity(
+        isDarkMode: _isDarkMode,
+        pushNotifications: _pushNotifications,
+        language: _language,
+      ));
+    } catch (e) {
+      debugPrint('Failed to update push notifications: $e');
+    }
+  }
 
-    await updateSettingsUseCase(entity);
+  Future<void> changeLanguage(String code) async {
+    _language = code;
+    notifyListeners();
+
+    try {
+      await updateSettingsUseCase(SettingsEntity(
+        isDarkMode: _isDarkMode,
+        pushNotifications: _pushNotifications,
+        language: _language,
+      ));
+    } catch (e) {
+      debugPrint('Failed to update language: $e');
+    }
   }
 }

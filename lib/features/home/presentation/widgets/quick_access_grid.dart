@@ -11,7 +11,6 @@ import 'package:application/features/statistics/presentation/screen/statistic_st
 import 'package:application/features/schedule/presentation/screen/schedule_study_screen.dart';
 import 'package:application/features/schedule/presentation/screen/schedule_teaching_screen.dart';
 
-import 'package:application/view/profile/update_profile.dart';
 import 'package:application/view/contact_lecturer/contact_lecturer_screen.dart';
 import 'package:application/view/qrcode/qrcode_screen.dart';
 import 'package:application/view/attendance/attendance_by_qrcode_screen.dart';
@@ -157,18 +156,6 @@ class QuickAccessGrid extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) => const ScheduleStudyScreen()
-                          ),
-                        );
-                      }),
-                  CustomButton(
-                      label: AppLabel.titleUpdateInformationForStudent,
-                      iconPath: AppImages.imageIconUpdateInformationForStudent,
-                      backgroundColor: AppColors.backgroundButtonUpdateInformationForStudent,
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const UpdateProfileScreen()
                           ),
                         );
                       }),
