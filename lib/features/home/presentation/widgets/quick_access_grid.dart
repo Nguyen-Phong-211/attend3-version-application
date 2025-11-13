@@ -10,9 +10,9 @@ import 'package:application/features/leave_request/presentation/screens/leave_sc
 import 'package:application/features/statistics/presentation/screen/statistic_student_screen.dart';
 import 'package:application/features/schedule/presentation/screen/schedule_study_screen.dart';
 import 'package:application/features/schedule/presentation/screen/schedule_teaching_screen.dart';
+import 'package:application/features/attendance/presentation/screen/create_qrcode_screen.dart';
+import 'package:application/features/contact/presentation/screen/contact_screen.dart';
 
-import 'package:application/view/contact_lecturer/contact_lecturer_screen.dart';
-import 'package:application/view/qrcode/qrcode_screen.dart';
 import 'package:application/view/attendance/attendance_by_qrcode_screen.dart';
 
 class QuickAccessGrid extends StatelessWidget {
@@ -94,7 +94,7 @@ class QuickAccessGrid extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const QrCodeScreen()
+                              builder: (context) => const CreateQrcodeScreen()
                           ),
                         );
                       }),
@@ -143,7 +143,7 @@ class QuickAccessGrid extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const ContactLecturerScreen()
+                              builder: (context) => const ContactScreen()
                           ),
                         );
                       }),

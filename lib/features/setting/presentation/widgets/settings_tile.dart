@@ -6,6 +6,7 @@ class SettingsTile extends StatelessWidget {
   final String title;
   final Color color;
   final VoidCallback onTap;
+  final Widget? subTitle;
 
   const SettingsTile({
     super.key,
@@ -13,6 +14,7 @@ class SettingsTile extends StatelessWidget {
     required this.title,
     required this.color,
     required this.onTap,
+    this.subTitle,
   });
 
   @override
@@ -24,6 +26,7 @@ class SettingsTile extends StatelessWidget {
         child: Icon(icon, color: color),
       ),
       title: Text(title, style: TextStyles.titleMedium),
+      subtitle: subTitle,
       onTap: onTap,
     );
   }

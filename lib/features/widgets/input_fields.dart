@@ -243,4 +243,66 @@ class InputFields {
       ),
     );
   }
+
+  static Widget textArea({
+    required TextEditingController controller,
+    required String hintText,
+    TextStyle? textStyle,
+    TextStyle? hintStyle,
+    Color fillColor = Colors.white,
+  }) {
+    return TextField(
+      controller: controller,
+      maxLines: 6,
+      style: textStyle ?? TextStyles.titleValueInput,
+      decoration: InputDecoration(
+        hintText: hintText,
+        hintStyle: hintStyle ?? TextStyles.hintTextInput.copyWith(color: Colors.grey),
+        prefixIcon: const Icon(Icons.message_rounded, color: AppColors.primary, size: 15,),
+        filled: true,
+        fillColor: fillColor,
+        contentPadding: const EdgeInsets.all(16),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: AppBorderRadius.radius12,
+          borderSide: BorderSide(color: Colors.grey.shade300, width: 1.5),
+        ),
+        focusedBorder: const OutlineInputBorder(
+          borderRadius: AppBorderRadius.radius12,
+          borderSide: BorderSide(color: AppColors.inputFocus, width: 1.5),
+        ),
+      ),
+    );
+  }
+
+  static Widget inputText({
+    required TextEditingController controller,
+    required String hintText,
+    TextStyle? textStyle,
+    TextStyle? hintStyle,
+    Color fillColor = Colors.white,
+  }) {
+    return TextField(
+      controller: controller,
+      style: textStyle ?? TextStyles.titleValueInput,
+      decoration: InputDecoration(
+        hintText: hintText,
+        hintStyle: hintStyle ??
+            TextStyles.hintTextInput.copyWith(color: Colors.grey),
+        prefixIcon: const Icon(
+          Icons.closed_caption_rounded, color: AppColors.primary, size: 15,),
+        filled: true,
+        fillColor: fillColor,
+        contentPadding: const EdgeInsets.symmetric(
+            vertical: 10, horizontal: 12),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: AppBorderRadius.radius12,
+          borderSide: BorderSide(color: Colors.grey.shade300, width: 1.5),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: AppBorderRadius.radius12,
+          borderSide: const BorderSide(color: AppColors.inputFocus, width: 1.5),
+        ),
+      ),
+    );
+  }
 }

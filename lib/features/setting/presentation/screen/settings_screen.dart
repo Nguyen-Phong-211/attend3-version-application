@@ -18,6 +18,7 @@ import 'package:provider/provider.dart';
 import 'package:application/features/setting/presentation/provider/setting_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:application/core/theme/text_styles.dart';
+import 'package:application/features/setting/presentation/widgets/setting_version.dart';
 import 'update_profile_screen.dart';
 import 'change_password_screen.dart';
 import 'change_language_screen.dart';
@@ -90,7 +91,7 @@ class SettingsScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 16),
 
-                        // ---------- ỨNG DỤNG ----------
+                        // ---------- APPLICATION ----------
                         SettingsSectionCard(
                           title: 'Ứng dụng',
                           children: [
@@ -166,24 +167,31 @@ class SettingsScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 16),
 
-                        // ---------- HỆ THỐNG ----------
+                        // ---------- SYSTEM ----------
                         SettingsSectionCard(
                           title: 'Hệ thống',
                           children: [
+                            SettingsTile(
+                              icon: Icons.info_outline_rounded,
+                              title: 'Phiên bản ứng dụng',
+                              color: Colors.blue,
+                              subTitle: const AppVersionSubtitle(),
+                              onTap: () {},
+                            ),
                             SettingsSwitchTile(
                               icon: Icons.dark_mode,
                               title: 'Chế độ tối',
-                              subtitle: 'Bật giao diện nền tối',
+                              subtitle: const Text('Bật giao diện nền tối', style: TextStyles.bodyNormal,),
                               value: settingProvider.isDarkMode,
                               onChanged: (v) => settingProvider.toggleDarkMode(v),
                             ),
+
                             SettingsSwitchTile(
                               icon: Icons.notifications_active_outlined,
                               title: 'Thông báo đẩy',
-                              subtitle: 'Nhận thông báo mới',
+                              subtitle: const Text('Nhận thông báo mới', style: TextStyles.bodyNormal),
                               value: state.pushNotifications,
-                              onChanged: (v) =>
-                                  bloc.add(TogglePushNotificationEvent(v)),
+                              onChanged: (v) => bloc.add(TogglePushNotificationEvent(v)),
                             ),
                             SettingsTile(
                               icon: Icons.cleaning_services_outlined,

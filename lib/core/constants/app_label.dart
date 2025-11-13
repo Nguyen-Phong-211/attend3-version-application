@@ -52,7 +52,7 @@ class AppLabel {
   static const titleApprovedLeave = 'Duyệt nghỉ phép';
   static const titleScheduleTeaching = 'Lịch dạy';
   static const titleStaticForStudent = 'Thống kê';
-  static const titleContactLecturer = 'Liên hệ giảng viên';
+  static const titleContactLecturer = 'Liên hệ';
   static const titleScheduleLearning = 'Lịch học';
   static const titleUpdateInformationForStudent  = 'Cập nhật thông tin';
 

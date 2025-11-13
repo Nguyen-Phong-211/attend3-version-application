@@ -5,17 +5,17 @@ import 'package:application/core/theme/text_styles.dart';
 class SettingsSwitchTile extends StatelessWidget {
   final IconData icon;
   final String title;
-  final String subtitle;
+  final Widget? subtitle;
   final bool value;
-  final void Function(bool) onChanged;
+  final void Function(bool)? onChanged;
 
   const SettingsSwitchTile({
     super.key,
     required this.icon,
     required this.title,
-    required this.subtitle,
+    this.subtitle,
     required this.value,
-    required this.onChanged,
+    this.onChanged,
   });
 
   @override
@@ -27,10 +27,10 @@ class SettingsSwitchTile extends StatelessWidget {
         child: Icon(icon, color: AppColors.primary),
       ),
       title: Text(title, style: TextStyles.titleMedium),
-      subtitle: Text(subtitle, style: TextStyles.bodyNormal),
+      subtitle: subtitle,
       value: value,
       onChanged: onChanged,
-      activeColor: AppColors.primary,
+      activeThumbColor: AppColors.primary,
     );
   }
 }

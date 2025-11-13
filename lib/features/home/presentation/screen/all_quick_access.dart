@@ -15,17 +15,17 @@ import 'package:application/features/statistics/presentation/screen/statistic_le
 import 'package:application/features/schedule/presentation/screen/schedule_study_screen.dart';
 import 'package:application/features/schedule/presentation/screen/schedule_teaching_screen.dart';
 import 'package:application/features/setting/presentation/screen/settings_screen.dart';
+import 'package:application/features/attendance/presentation/screen/create_qrcode_screen.dart';
+import 'package:application/features/contact/presentation/screen/contact_screen.dart';
+import 'package:application/features/attendance/presentation/screen/attendance_history_screen.dart';
 
 import 'package:application/view/attendance/attendance_by_qrcode_screen.dart';
 import 'package:application/view/profile/update_profile.dart';
-import 'package:application/view/contact_lecturer/contact_lecturer_screen.dart';
 import 'package:application/view/remind/remind_screen.dart';
-import 'package:application/view/attendance/attendance_history_screen.dart';
 import 'package:application/view/incident_report/incident_report_screen.dart';
 import 'package:application/view/profile/change_language_screen.dart';
 import 'package:application/view/term/term_screen.dart';
 import 'package:application/core/constants/app_images.dart';
-import 'package:application/view/qrcode/qrcode_screen.dart';
 
 // import 'package:application/core/constants/feature_permissions.dart';
 
@@ -141,7 +141,7 @@ class AllQuickAccessScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const QrCodeScreen()
+                            builder: (context) => const CreateQrcodeScreen()
                         ),
                       );
                     }
@@ -193,7 +193,7 @@ class AllQuickAccessScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const ContactLecturerScreen()
+                            builder: (context) => const ContactScreen()
                         ),
                       );
                     },

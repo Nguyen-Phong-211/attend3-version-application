@@ -23,6 +23,8 @@ import 'package:application/features/schedule/presentation/screen/schedule_teach
 import 'package:application/features/setting/presentation/screen/settings_screen.dart';
 // notification module
 import 'package:application/features/notification/presentation/screen/notification_screen.dart';
+// contact module
+import 'package:application/features/contact/presentation/screen/contact_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -65,6 +67,9 @@ class RouteGenerator {
       // notification module
       case AppRoutes.notification:
         return MaterialPageRoute(builder: (_) => const NotificationScreen());
+      // contact module
+      case AppRoutes.contact:
+        return MaterialPageRoute(builder: (_) => const ContactScreen());
 
       default:
         return MaterialPageRoute(

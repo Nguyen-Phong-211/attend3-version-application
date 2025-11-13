@@ -22,8 +22,10 @@ class AppRoutes {
   // notification module
   static const String notification = '/notification';
 
+  // contact module
+  static const String contact = '/contact';
+
   static const String profile = '/profile';
-  static const String contactLecturer = '/contactLecturer';
   static const String remind = '/remind';
   static const String scanCode = '/scanCode';
   static const String attendanceHistory = '/attendanceHistory';

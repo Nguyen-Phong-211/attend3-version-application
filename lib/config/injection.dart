@@ -4,6 +4,8 @@ import 'package:application/features/leave_request/injection.dart';
 import 'package:application/features/statistics/injection.dart';
 import 'package:application/features/schedule/injection.dart';
 import 'package:application/features/setting/injection.dart';
+import 'package:application/features/attendance/injection.dart';
+import 'package:application/features/contact/injection.dart';
 
 void initAppInjection() {
   initAuthModule();
@@ -15,4 +17,6 @@ void initAppInjection() {
   initScheduleTeachingModule();
   initSettingModule();
   initLoginHistoryModule();
+  initAttendanceModule();
+  initContactModule();
 }

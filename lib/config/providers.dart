@@ -14,6 +14,8 @@ import 'package:application/features/setting/presentation/provider/setting_provi
 import 'package:application/features/setting/domain/usecases/get_settings_usecase.dart';
 import 'package:application/features/setting/domain/usecases/update_settings_usecase.dart';
 import 'package:application/features/setting/presentation/provider/login_history_provider.dart';
+import 'package:application/features/attendance/presentation/provider/create_qrcode_provider.dart';
+import 'package:application/features/contact/presentation/provider/contact_provider.dart';
 
 class AppProviders extends StatelessWidget {
   final Widget child;
@@ -54,6 +56,14 @@ class AppProviders extends StatelessWidget {
         /// Login history
         ChangeNotifierProvider(
           create: (_) => GetIt.instance<LoginHistoryProvider>(),
+        ),
+        /// Create QRCode
+        ChangeNotifierProvider(
+            create: (_) => GetIt.instance<CreateQrCodeProvider>(),
+        ),
+        /// Contact
+        ChangeNotifierProvider(
+            create: (_) => GetIt.instance<ContactProvider>(),
         ),
       ],
       child: child,

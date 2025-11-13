@@ -10,6 +10,8 @@ import 'package:application/features/statistics/presentation/bloc/statistic_bloc
 import 'package:application/features/schedule/presentation/bloc/schedule_bloc.dart';
 import 'package:application/features/schedule/presentation/bloc/schedule_teaching_bloc.dart';
 import 'package:application/features/setting/presentation/bloc/settings_bloc.dart';
+import 'package:application/features/attendance/presentation/bloc/create_qrcode_bloc.dart';
+import 'package:application/features/contact/presentation/bloc/contact_bloc.dart';
 
 class AppBlocs extends StatelessWidget {
   final Widget child;
@@ -28,6 +30,8 @@ class AppBlocs extends StatelessWidget {
         BlocProvider(create: (_) => GetIt.instance<ScheduleTeachingBloc>()),
         BlocProvider(create: (_) => GetIt.instance<SettingBloc>()..add(LoadSettingEvent())),
         BlocProvider(create: (_) => GetIt.instance<LoginHistoryBloc>()),
+        BlocProvider(create: (_) => GetIt.instance<CreateQrCodeBloc>()),
+        BlocProvider(create: (_) => GetIt.instance<ContactBloc>()),
       ],
       child: child,
     );
